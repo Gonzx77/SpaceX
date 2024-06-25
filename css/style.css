@@ -8,7 +8,7 @@
 
 body{
     height: 100vh;
-    background-color: var(--color-1);
+    background-color: var(--color-1-2);
 }
 
 .mainGrid{
@@ -59,4 +59,45 @@ body{
 }
 .mGS2SGGridSection{
     border: 1px solid pink;
+}
+
+
+
+.infoGalery1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.iG1Element{
+    min-height: 40px;
+    display: grid;
+    grid-template-columns: 40px calc(100% - 40px);
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 20px;
+}
+.iG1ElementImg{
+    display: flex;
+    justify-content: center;
+    filter: invert();
+}
+.iG1ElementTitle{
+    border: none;
+}
+
+.iG1Title{
+    color: #ffffff;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.iG1Text{
+    color: #ffffff;
+    font-size: 14px;
+}
+.iG1Img{
+    margin-top: 6px;
+    width: 24px;
+    height: 24px;
 }
