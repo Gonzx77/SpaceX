@@ -1,5 +1,14 @@
 @import url(variables.css);
 
+@font-face {
+    font-family: "Bold";
+    src: url(../storage/fonts/PublicSans-Bold.ttf);
+}
+@font-face {
+    font-family: "Regular";
+    src: url(../storage/fonts/PublicSans-Regular.ttf);
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -66,17 +75,34 @@ body{
 .infoGalery1{
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 88vh;
 }
 .iG1Element{
-    min-height: 40px;
     display: grid;
     grid-template-columns: 40px calc(100% - 40px);
     width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
     margin-bottom: 20px;
+}
+.iG2Element{
+    display: grid;
+    grid-template-columns: 74% 26%;
+    grid-template-rows: repeat(2, 1fr);
+    height: 60px;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-bottom: 20px;
+}
+.iG2ElementSection{
+    display: flex;
+    align-items: center;
+    font-family: "Bold", sans-serif;
+    color: #ffffff;
+    font-size: 12px;
 }
 .iG1ElementImg{
     display: flex;
@@ -88,16 +114,31 @@ body{
 }
 
 .iG1Title{
+    font-family: "Bold", sans-serif;
     color: #ffffff;
-    font-size: 30px;
+    font-size: 26px;
     margin-bottom: 10px;
 }
 .iG1Text{
-    color: #ffffff;
-    font-size: 14px;
+    font-family: "Regular", sans-serif;
+    color: #ffffff90;
+    font-size: 12px;
 }
 .iG1Img{
     margin-top: 6px;
     width: 24px;
     height: 24px;
+}
+
+.bar{
+    width: 90%;
+    height: 14px;
+    background-color: #323232;
+    border-radius: 10px;
+}
+.barProgress{
+    width: 60%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--color-2);
 }
