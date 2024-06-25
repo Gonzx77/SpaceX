@@ -47,12 +47,12 @@ body{
 #mGS2{
     display: grid;
     grid-template-columns: 1;
-    grid-template-rows: 28% 58% 14%;
+    grid-template-rows: 12% 20% 54% 14%;
 }
 .mGS2Section{
     border: 1px solid pink;
 }
-#mGS2SGGrid{
+#mGS2SGrid{
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: repeat(3, 1fr);
