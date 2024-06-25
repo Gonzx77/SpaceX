@@ -1,0 +1,62 @@
+@import url(variables.css);
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--color-1);
+}
+
+.mainGrid{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 18% 64% 18%;
+    grid-template-rows: 1;
+}
+
+.mainGridSection{
+    border: 1px solid green;
+}
+
+
+#mGS1{
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 12% 88%;
+}
+.mGS1Section{
+    border: 1px solid pink;
+}
+
+
+#mGS3{
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 12% 74% 14%;
+}
+.mGS3Section{
+    border: 1px solid pink;
+}
+
+
+#mGS2{
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 28% 58% 14%;
+}
+.mGS2Section{
+    border: 1px solid pink;
+}
+#mGS2SGGrid{
+    display: grid;
+    grid-template-rows: 1;
+    grid-template-columns: repeat(3, 1fr);
+}
+.mGS2SGGridSection{
+    border: 1px solid pink;
+}
