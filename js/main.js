@@ -1,6 +1,8 @@
 import { footer, changeFooter } from "./modules/footer.js";
-footer();
+import { Rockets_menu } from "./modules/maquetar/rockets.js";
 
+await footer();
+await Rockets_menu();
 
 const setFooter = async(element) => {
     let padre = element;
