@@ -30,8 +30,8 @@ body{
     box-shadow: 0px 0px 20px 4px var(--color-1);
     position: fixed;
     bottom: 0;
-    width: 1000px;
-    margin-left: calc((100% - 1000px) / 2);
+    width: 800px;
+    margin-left: calc((100% - 800px) / 2);
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
     border-right: 60px solid transparent;
@@ -42,12 +42,12 @@ body{
 .footerGrid{
     bottom: 0;
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(14, 1fr);
     grid-template-rows: 1;
-    margin-left: calc((100% - 900px) / 2);
+    margin-left: calc((100% - 760px) / 2);
     position: fixed;
     height: 80px;
-    width: 900px;
+    width: 760px;
 
 }
 .footerElement{
@@ -58,11 +58,11 @@ body{
     justify-content: center;
 }
 .footerImg{
-    width: 40px;
-    height: 40PX;
+    width: 30px;
+    height: 30PX;
 }
 .footerImgmgLine{
-    width: 50px;
+    width: 40px;
     height: 4px;
     background-color: #ffffff;
 }
@@ -111,6 +111,11 @@ body{
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: repeat(2, 1fr);
+}
+.mGS2SGGSDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -172,7 +177,7 @@ body{
 .bar{
     width: 90%;
     height: 14px;
-    background-color: #323232;
+    background-color: var(--color-1);
     border-radius: 10px;
 }
 .barProgress{
@@ -210,7 +215,7 @@ body{
 
 .infoFlex{
     gap: 4px;
-    width: 100%;
+    width: 90%;
     height: 26vh;
     display: flex;
     flex-direction: column;
