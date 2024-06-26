@@ -17,7 +17,7 @@
 
 body{
     height: 100vh;
-    background-color: var(--color-1-2);
+    background: linear-gradient(var(--color-b1), var(--color-b2));
 }
 
 
@@ -77,9 +77,6 @@ body{
     grid-template-rows: 1;
 }
 
-.mainGridSection{
-    border: 1px solid green;
-}
 
 
 #mGS1{
@@ -90,7 +87,6 @@ body{
 .mGS1Section{
     display: flex;
     justify-content: center;
-    border: 1px solid pink;
 }
 
 
@@ -99,19 +95,13 @@ body{
     grid-template-columns: 1;
     grid-template-rows: 12% 74% 14%;
 }
-.mGS3Section{
-    border: 1px solid pink;
-}
-
 
 #mGS2{
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 12% 20% 54% 14%;
 }
-.mGS2Section{
-    border: 1px solid pink;
-}
+
 #mGS2SGrid{
     display: grid;
     grid-template-rows: 1;
@@ -121,10 +111,6 @@ body{
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: repeat(2, 1fr);
-    border: 1px solid pink;
-}
-.mGS2SGGSDiv{
-    border: 1px solid pink;
 }
 
 
@@ -164,9 +150,6 @@ body{
     display: flex;
     justify-content: center;
     filter: invert();
-}
-.iG1ElementTitle{
-    border: none;
 }
 
 .iG1Title{
@@ -221,7 +204,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid pink;
 }
 
 
@@ -263,13 +245,14 @@ body{
 #imagesGaleryCenter{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .imagesGalery{
     gap: 10px;
     display: flex;
     overflow: hidden;
     overflow-x: auto;
-    width: 100%;
+    width: 80%;
     height: 240px;
 }
 .rocketImg{
@@ -313,4 +296,27 @@ body{
 .circleInfo{
     font-family: "Regular", sans-serif;
     font-size: 14px;
+}
+
+
+#navigationNumbersCenter{
+    display: flex;
+    justify-content: center;
+}
+.navigationNumbersDiv{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1;
+    width: 80%;
+    height: 40px;
+}
+.navigationNumber{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: "Bold", sans-serif;
+}
+.navigationNumber:hover{
+    background-color: var(--color-4-2);
 }
