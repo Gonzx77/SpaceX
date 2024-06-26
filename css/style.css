@@ -52,9 +52,19 @@ body{
 }
 .footerElement{
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
+}
+.footerImg{
+    width: 40px;
+    height: 40PX;
+}
+.footerImgmgLine{
+    width: 50px;
+    height: 4px;
+    background-color: #ffffff;
 }
 
 
