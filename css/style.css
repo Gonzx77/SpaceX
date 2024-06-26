@@ -255,3 +255,20 @@ body{
     margin-right: 10px;
     float: right;
 }
+
+
+#imagesGaleryCenter{
+    display: flex;
+    align-items: center;
+}
+.imagesGalery{
+    gap: 10px;
+    display: flex;
+    overflow: hidden;
+    overflow-x: auto;
+    width: 100%;
+    height: 240px;
+}
+.rocketImg{
+    width: 100%;
+}
