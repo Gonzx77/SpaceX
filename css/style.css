@@ -36,7 +36,7 @@ body{
     border-top-right-radius: 50%;
     border-right: 60px solid transparent;
     border-left: 60px solid transparent;
-    border-bottom: 140px solid var(--color-4);
+    border-bottom: 100px solid var(--color-4);
     background-color: var(--color-4);
 }
 .footerGrid{
