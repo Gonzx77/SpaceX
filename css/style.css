@@ -219,6 +219,7 @@ body{
     height: 26vh;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 .iFEText{
     font-size: 16px;

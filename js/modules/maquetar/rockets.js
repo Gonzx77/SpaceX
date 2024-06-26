@@ -44,6 +44,10 @@ export const Rocket = async() =>{
     let stages = rocket.stages;
     let landing_legs = rocket.landing_legs.number;
     let material = rocket.landing_legs.material;
+    let engines_type = rocket.engines.type;
+    let engine_loss_max = rocket.engines.engine_loss_max;
+    let layout = rocket.engines.layout;
+    let enginesNumber = rocket.engines.number;
 
 
     let thrust_sea_level_kN = rocket.engines.thrust_sea_level.kN;
@@ -54,9 +58,17 @@ export const Rocket = async() =>{
 
     let propellants = rocket.engines;
     let propellansContador = 0;
+    let keys = [];
+    let htmlKeys = "";
     for (let key in propellants){
         if (key.startsWith("propellant")){
+            let content = rocket.engines[key];
             propellansContador++;
+            keys.push(key);
+            htmlKeys += `
+            <div class="infoFlexElement">
+                <p class="iFEText Left">Stage ${propellansContador} fuel</p><p class="iFEText Right">${content}</p>
+            </div>`; 
         }
     };
 
@@ -186,23 +198,18 @@ export const Rocket = async() =>{
                             <p class="infoFlexTitle">ENGINE INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Type</p><p class="iFEText Right">${engines_type}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Maximum power loss</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Maximum power loss</p><p class="iFEText Right">${engine_loss_max}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Engine availability</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Engine availability</p><p class="iFEText Right">${layout}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Number of engines</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Number of engines</p><p class="iFEText Right">${enginesNumber}</p>
                             </div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Stage 1 fuel</p><p class="iFEText Right">0</p>
-                            </div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Stage 2 fuel</p><p class="iFEText Right">0</p>
-                            </div>
+                            ${htmlKeys}
                         </div>
                     </div>
                 </div>
