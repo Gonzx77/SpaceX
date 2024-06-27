@@ -1,12 +1,11 @@
 import { footer, changeFooter } from "./modules/footer.js";
 import { menu, changeMenu } from "./modules/menu.js";
 import { Rockets_menu, Rocket } from "./modules/maquetar/rockets.js";
+import { Capsule } from "./modules/maquetar/capsule.js";
 import { getRockets } from "./modules/app.js";
 
 await footer();
 await Rocket(0);
-await Rockets_menu();
-await menu();
 
 const setFooter = async(element) => {
     let padre = element;
@@ -15,7 +14,6 @@ const setFooter = async(element) => {
 
     await changeFooter(id);
 };
-document.setFooter = setFooter;
 
 const setMenu = async(element) =>{
     let id = element.id;
@@ -25,3 +23,22 @@ const setMenu = async(element) =>{
     await changeMenu(id);
 };
 document.setMenu = setMenu;
+
+const openRockets = async(element) =>{
+    await setFooter(element);
+    await Rocket(0);
+    await footer();
+    await Rockets_menu();
+    await menu();
+};
+document.openRockets = openRockets;
+
+
+
+
+
+const openCapsulas = async(element)=>{
+    await setFooter(element);
+    await Capsule();
+};
+document.openCapsulas = openCapsulas;

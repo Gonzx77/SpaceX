@@ -1,6 +1,6 @@
 export const menu = async() =>{
     let menuNumbers = document.querySelector(".navigationNumbersGrid");
-    var hijos = menuNumbers.children;
+    let hijos = menuNumbers.children;
 
     for (let i = 0; i < hijos.length; i++) {
         if (hijos[i].tagName.toLowerCase() === 'div') {
@@ -14,7 +14,7 @@ export const menu = async() =>{
 
 export const changeMenu = async(id) =>{
     let menuNumbers = document.querySelector(".navigationNumbersGrid");
-    var hijos = menuNumbers.children;
+    let hijos = menuNumbers.children;
 
     for (let i = 0; i < hijos.length; i++) {
         if (hijos[i].id == id){

@@ -28,11 +28,11 @@ export const Rocket = async(i) =>{
     let rockets = await getRockets();
     let rocket = rockets[i];
 
-    let infoGalery1 = document.querySelector(".infoGalery1");
+    let mGS1 = document.querySelector("#mGS1");
     let mGS2 = document.querySelector("#mGS2");
     let mGS3 = document.querySelector("#mGS3");
 
-    infoGalery1.innerHTML = "";
+    mGS1.innerHTML = "";
     mGS2.innerHTML = "";
     mGS3.innerHTML = "";
 
@@ -94,8 +94,9 @@ export const Rocket = async(i) =>{
         if (shieldHeightFeets == null){
             shieldHeightFeets = 0;
         }
-        shieldHtml = `
-        <div class="iG2Element">
+        shieldHtml = 
+        `
+    <div class="iG2Element">
         <div class="iG2ElementSection">
             <p class="iG2ElementText">Diameter rocket shield:</p>
         </div>
@@ -190,8 +191,11 @@ export const Rocket = async(i) =>{
 
 
     let plantilla1 = `
-    <div class="iG1Element">
-                    <div class="iG1ElementImg">
+    <div class="mGS1Section"></div>
+    <div class="mGS1Section">
+        <div class="infoGalery1">
+                    <div class="iG1Element">
+                        <div class="iG1ElementImg">
                             <img class="iG1Img" src="storage/media/images/point.png">
                         </div>
                         <div class="iG1ElementTitle">
@@ -225,9 +229,12 @@ export const Rocket = async(i) =>{
                             <p class="iG1Title">Read more about the rocket</p>
                             <a href="${wikipedia}" target="_blank" class="iG1Text">Wikipedia</a>
                         </div>
-                    </div>`;
+                    </div>
+        </div>
+    </div>
+                `;
 
-    infoGalery1.innerHTML = plantilla1;
+    mGS1.innerHTML = plantilla1;
 
     let plantilla2 = `
                 <div id="centerTitle" class="mGS2Section">
@@ -379,7 +386,8 @@ export const Rocket = async(i) =>{
         </div>
 
         ${shieldHtml}
-
+            </div>
+        </div>
     </div>
     <div id="navigationNumbersCenter" class="mGS3Section">
         <div class="navigationNumbersDiv">
