@@ -175,6 +175,7 @@ body{
 }
 
 .bar{
+    overflow: hidden;
     width: 90%;
     height: 14px;
     background-color: var(--color-1);
