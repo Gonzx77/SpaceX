@@ -27,7 +27,6 @@ export const Rockets_menu = async() =>{
 export const Rocket = async(i) =>{
     let rockets = await getRockets();
     let rocket = rockets[i];
-    console.log(rocket);
 
     let infoGalery1 = document.querySelector(".infoGalery1");
     let mGS2 = document.querySelector("#mGS2");
