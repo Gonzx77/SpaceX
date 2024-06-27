@@ -1,7 +1,5 @@
 import { getRockets } from "../app.js"
 
-
-
 export const Rockets_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     let rockets = await getRockets();
@@ -32,6 +30,7 @@ export const Rocket = async() =>{
 
     let infoGalery1 = document.querySelector(".infoGalery1");
     let mGS2 = document.querySelector("#mGS2");
+    let mGS3 = document.querySelector("#mGS3");
 
     let country = rocket.country;
     let description = rocket.description;
@@ -116,7 +115,7 @@ export const Rocket = async() =>{
                         </div>
                         <div class="iG1ElementTitle">
                             <p class="iG1Title">Read more about the rocket</p>
-                            <a href="${wikipedia}" class="iG1Text">Wikipedia</a>
+                            <a href="${wikipedia}" target="_blank" class="iG1Text">Wikipedia</a>
                         </div>
                     </div>`;
 
@@ -219,4 +218,168 @@ export const Rocket = async() =>{
             </div>`;
 
     mGS2.innerHTML = plantilla2;
+
+    let plantilla3 = `
+    <div class="mGS3Section"></div>
+    <div id="flexRight" class="mGS3Section">
+
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Rocket Weight:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 kg</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 lb</p>
+            </div>
+        </div>
+        
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Low Earth Orbit:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 kg</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 lb</p>
+            </div>
+        </div>
+        
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Geosynchronous Transfer Orbit:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+        
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Mars Orbit:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+        
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Pluto Orbit:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+        
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Rocket Height:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Rocket diameter:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Diameter rocket shield:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+                <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Heihgt Rocket Shield:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">Heihgt Rocket Shield:</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 M</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 F</p>
+            </div>
+        </div>
+
+    </div>
+    <div id="navigationNumbersCenter" class="mGS3Section">
+        <div class="navigationNumbersDiv">
+            <div class="navigationNumbersGrid">
+
+            </div>
+        </div>
+    </div>`;
+
+    mGS3.innerHTML = plantilla3;
 }

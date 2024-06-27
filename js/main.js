@@ -3,8 +3,8 @@ import { Rockets_menu, Rocket } from "./modules/maquetar/rockets.js";
 import { getRockets } from "./modules/app.js";
 
 await footer();
-await Rockets_menu();
 await Rocket();
+await Rockets_menu();
 
 const setFooter = async(element) => {
     let padre = element;
