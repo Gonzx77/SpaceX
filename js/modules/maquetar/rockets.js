@@ -48,25 +48,53 @@ export const Rocket = async(i) =>{
     let stages = rocket.stages;
     let landing_legs = rocket.landing_legs.number;
     let material = rocket.landing_legs.material;
+    if (material == null){
+        material = 0;
+    }
     let engines_type = rocket.engines.type;
     let engines_version = rocket.engines.version;
     let engine_loss_max = rocket.engines.engine_loss_max;
+    if (engine_loss_max == null){
+        engine_loss_max = 0;
+    }
     let layout = rocket.engines.layout;
+    if (layout == null){
+        layout = 0;
+    }
+    
     let enginesNumber = rocket.engines.number;
     let massKg = rocket.mass.kg;
+    let massKgPercent = (massKg / 2000000) * 100;
     let massLb = rocket.mass.lb;
+
     let heightMeters = rocket.height.meters;
+    let heightMetersPercent = (heightMeters / 200) * 100;
     let heightFeets = rocket.height.feet;
     let diameterMeters = rocket.diameter.meters;
+    let diameterMetersPercent = (diameterMeters / 20) * 100;
     let diameterFeets = rocket.diameter.feet;
 
 
     let shieldHtml = "";
     if (rocket.second_stage.payloads.composite_fairing){
         let shieldDiameterMeters = rocket.second_stage.payloads.composite_fairing.diameter.meters;
+        if (shieldDiameterMeters == null){
+            shieldDiameterMeters = 0;
+        }
+        let shieldDiameterMetersPercent = (shieldDiameterMeters / 10) * 100;
         let shieldDiameterFeets = rocket.second_stage.payloads.composite_fairing.diameter.feet;
-        let shieldHeihghtMeters = rocket.second_stage.payloads.composite_fairing.diameter.meters;
-        let shieldHeightFeets = rocket.second_stage.payloads.composite_fairing.diameter.feet;
+        if (shieldDiameterFeets == null){
+            shieldDiameterFeets = 0;
+        }
+        let shieldHeihghtMeters = rocket.second_stage.payloads.composite_fairing.height.meters;
+        if (shieldHeihghtMeters == null){
+            shieldHeihghtMeters = 0;
+        }
+        let shieldHeihghtMetersPercent = (shieldHeihghtMeters / 20) * 100;
+        let shieldHeightFeets = rocket.second_stage.payloads.composite_fairing.height.feet;
+        if (shieldHeightFeets == null){
+            shieldHeightFeets = 0;
+        }
         shieldHtml = `
         <div class="iG2Element">
         <div class="iG2ElementSection">
@@ -76,7 +104,7 @@ export const Rocket = async(i) =>{
             <p class="iG2ElementText">${shieldDiameterMeters} M</p>
         </div>
         <div class="iG2ElementSection">
-            <div class="bar"><div class="barProgress"></div></div>
+            <div class="bar"><div class="barProgress" style="width: ${shieldDiameterMetersPercent}%"></div></div>
         </div>
         <div class="iG2ElementSection">
             <p class="iG2ElementText">${shieldDiameterFeets} F</p>
@@ -90,7 +118,7 @@ export const Rocket = async(i) =>{
             <p class="iG2ElementText">${shieldHeihghtMeters} M</p>
         </div>
         <div class="iG2ElementSection">
-            <div class="bar"><div class="barProgress"></div></div>
+            <div class="bar"><div class="barProgress" style="width: ${shieldHeihghtMetersPercent}%"></div></div>
         </div>
         <div class="iG2ElementSection">
             <p class="iG2ElementText">${shieldHeightFeets} F</p>
@@ -115,6 +143,7 @@ export const Rocket = async(i) =>{
     for (let key in payload_weights){
         let name = rocket.payload_weights[key].name;
         let kg = rocket.payload_weights[key].kg;
+        let kgPercent = (kg / 200000) * 100;
         let lb = rocket.payload_weights[key].lb;
         payload_weightsCantidadHtml += `
         <div class="iG2Element">
@@ -125,7 +154,7 @@ export const Rocket = async(i) =>{
                 <p class="iG2ElementText">${kg} kg</p>
             </div>
             <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
+                <div class="bar"><div style="width: ${kgPercent}%" class="barProgress"></div></div>
             </div>
             <div class="iG2ElementSection">
                 <p class="iG2ElementText">${lb} lb</p>
@@ -311,7 +340,7 @@ export const Rocket = async(i) =>{
                 <p class="iG2ElementText">${massKg} kg</p>
             </div>
             <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
+                <div class="bar"><div class="barProgress" style="width: ${massKgPercent}%"></div></div>
             </div>
             <div class="iG2ElementSection">
                 <p class="iG2ElementText">${massLb} lb</p>
@@ -328,7 +357,7 @@ export const Rocket = async(i) =>{
                 <p class="iG2ElementText">${heightMeters} M</p>
             </div>
             <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
+                <div class="bar"><div class="barProgress" style="width: ${heightMetersPercent}%"></div></div>
             </div>
             <div class="iG2ElementSection">
                 <p class="iG2ElementText">${heightFeets} F</p>
@@ -343,7 +372,7 @@ export const Rocket = async(i) =>{
                 <p class="iG2ElementText">${diameterMeters} M</p>
             </div>
             <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
+                <div class="bar"><div class="barProgress" style="width: ${diameterMetersPercent}%"></div></div>
             </div>
             <div class="iG2ElementSection">
                 <p class="iG2ElementText">${diameterFeets} F</p>
