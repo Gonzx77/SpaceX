@@ -277,7 +277,6 @@ body{
     fill: var(--color-1);
     stroke: var(--color-3);
     stroke-width: 10px;
-    stroke-dasharray: 37.5 100;
     transform-origin: 50%;
     transform: rotate(90deg);
 }

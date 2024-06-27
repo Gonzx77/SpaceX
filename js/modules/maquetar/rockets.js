@@ -2,6 +2,7 @@ import { getRockets } from "../app.js"
 
 export const Rockets_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
+    container.innerHTML = "";
     let rockets = await getRockets();
     let number = 1;
 
@@ -14,7 +15,7 @@ export const Rockets_menu = async() =>{
 
     for (let i = 0; i < cont; i++){
         let plantilla = `
-        <div class="navigationNumber">
+        <div onclick="setMenu(this)" id="${number}" class="navigationNumber">
             ${number}
         </div>`;
 
@@ -23,14 +24,18 @@ export const Rockets_menu = async() =>{
     }
 };
 
-export const Rocket = async() =>{
+export const Rocket = async(i) =>{
     let rockets = await getRockets();
-    let rocket = rockets[0];
+    let rocket = rockets[i];
     console.log(rocket);
 
     let infoGalery1 = document.querySelector(".infoGalery1");
     let mGS2 = document.querySelector("#mGS2");
     let mGS3 = document.querySelector("#mGS3");
+
+    infoGalery1.innerHTML = "";
+    mGS2.innerHTML = "";
+    mGS3.innerHTML = "";
 
     let country = rocket.country;
     let description = rocket.description;
@@ -44,27 +49,102 @@ export const Rocket = async() =>{
     let landing_legs = rocket.landing_legs.number;
     let material = rocket.landing_legs.material;
     let engines_type = rocket.engines.type;
+    let engines_version = rocket.engines.version;
     let engine_loss_max = rocket.engines.engine_loss_max;
     let layout = rocket.engines.layout;
     let enginesNumber = rocket.engines.number;
+    let massKg = rocket.mass.kg;
+    let massLb = rocket.mass.lb;
+    let heightMeters = rocket.height.meters;
+    let heightFeets = rocket.height.feet;
+    let diameterMeters = rocket.diameter.meters;
+    let diameterFeets = rocket.diameter.feet;
+
+
+    let shieldHtml = "";
+    if (rocket.second_stage.payloads.composite_fairing){
+        let shieldDiameterMeters = rocket.second_stage.payloads.composite_fairing.diameter.meters;
+        let shieldDiameterFeets = rocket.second_stage.payloads.composite_fairing.diameter.feet;
+        let shieldHeihghtMeters = rocket.second_stage.payloads.composite_fairing.diameter.meters;
+        let shieldHeightFeets = rocket.second_stage.payloads.composite_fairing.diameter.feet;
+        shieldHtml = `
+        <div class="iG2Element">
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">Diameter rocket shield:</p>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">${shieldDiameterMeters} M</p>
+        </div>
+        <div class="iG2ElementSection">
+            <div class="bar"><div class="barProgress"></div></div>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">${shieldDiameterFeets} F</p>
+        </div>
+    </div>
+    <div class="iG2Element">
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">Heihgt Rocket Shield:</p>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">${shieldHeihghtMeters} M</p>
+        </div>
+        <div class="iG2ElementSection">
+            <div class="bar"><div class="barProgress"></div></div>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">${shieldHeightFeets} F</p>
+        </div>
+    </div>`;
+    };
+
 
 
     let thrust_sea_level_kN = rocket.engines.thrust_sea_level.kN;
     let thrust_sea_level_lbf = rocket.engines.thrust_sea_level.lbf;
+    let percent_sea_level = (thrust_sea_level_kN / 1000) * 100;
+
+
     let thrust_vacuum_kN = rocket.engines.thrust_vacuum.kN;
     let thrust_vacuum_lbf = rocket.engines.thrust_vacuum.lbf;
+    let thrust_vacuum = (thrust_vacuum_kN / 1000) * 100;
+
+    let payload_weights = rocket.payload_weights;
+    let payload_weightsCantidad = rocket.payload_weights.length;
+    let payload_weightsCantidadHtml = "";
+    for (let key in payload_weights){
+        let name = rocket.payload_weights[key].name;
+        let kg = rocket.payload_weights[key].kg;
+        let lb = rocket.payload_weights[key].lb;
+        payload_weightsCantidadHtml += `
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">${name}</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">${kg} kg</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">${lb} lb</p>
+            </div>
+        </div>`;
+    };
+    
 
 
     let propellants = rocket.engines;
     let propellansContador = 0;
-    let keys = [];
-    let htmlKeys = "";
+    let propellantsKeys = [];
+    let propellantsHtml = "";
     for (let key in propellants){
         if (key.startsWith("propellant")){
             let content = rocket.engines[key];
             propellansContador++;
-            keys.push(key);
-            htmlKeys += `
+            propellantsKeys.push(key);
+            propellantsHtml += `
             <div class="infoFlexElement">
                 <p class="iFEText Left">Stage ${propellansContador} fuel</p><p class="iFEText Right">${content}</p>
             </div>`; 
@@ -130,12 +210,12 @@ export const Rocket = async() =>{
                     <div class="circleDiv">
                         <p class="circeTitle">
                             <span id="circleTitleMargin">Atmospheric acceleration</span>
-                            <span class="circleInfo">0 %</span>
+                            <span class="circleInfo">${percent_sea_level} %</span>
                             <span class="circleInfo">${thrust_sea_level_kN} kN</span>
                             <span class="circleInfo">${thrust_sea_level_lbf} Lbf</span>
                         </p>
                         <svg class="circleSvg">
-                            <circle class="circle" r="80" cx="50%" cy="50%" pathlength="100"></circle>
+                            <circle class="circle" stroke-dasharray="${percent_sea_level} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
                         </svg>
                     </div>
                 </div>
@@ -143,12 +223,12 @@ export const Rocket = async() =>{
                     <div class="circleDiv">
                         <p class="circeTitle">
                             <span id="circleTitleMargin">Speed in space</span>
-                            <span class="circleInfo">0 %</span>
+                            <span class="circleInfo">${thrust_vacuum} %</span>
                             <span class="circleInfo">${thrust_vacuum_kN} kN</span>
                             <span class="circleInfo">${thrust_vacuum_lbf} Lbf</span>
                         </p>
                         <svg class="circleSvg">
-                            <circle class="circle" r="80" cx="50%" cy="50%" pathlength="100"></circle>
+                            <circle class="circle" stroke-dasharray="${thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
                         </svg>
                     </div>
                 </div>
@@ -197,7 +277,7 @@ export const Rocket = async() =>{
                             <p class="infoFlexTitle">ENGINE INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">${engines_type}</p>
+                                <p class="iFEText Left">Type</p><p class="iFEText Right">${engines_type} ${engines_version}</p>
                             </div>
                             <div class="infoFlexElement">
                                 <p class="iFEText Left">Maximum power loss</p><p class="iFEText Right">${engine_loss_max}</p>
@@ -208,7 +288,7 @@ export const Rocket = async() =>{
                             <div class="infoFlexElement">
                                 <p class="iFEText Left">Number of engines</p><p class="iFEText Right">${enginesNumber}</p>
                             </div>
-                            ${htmlKeys}
+                            ${propellantsHtml}
                         </div>
                     </div>
                 </div>
@@ -228,88 +308,30 @@ export const Rocket = async() =>{
                 <p class="iG2ElementText">Rocket Weight:</p>
             </div>
             <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 kg</p>
+                <p class="iG2ElementText">${massKg} kg</p>
             </div>
             <div class="iG2ElementSection">
                 <div class="bar"><div class="barProgress"></div></div>
             </div>
             <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 lb</p>
+                <p class="iG2ElementText">${massLb} lb</p>
             </div>
         </div>
         
-        <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Low Earth Orbit:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 kg</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 lb</p>
-            </div>
-        </div>
-        
-        <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Geosynchronous Transfer Orbit:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
-            </div>
-        </div>
-        
-        <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Mars Orbit:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
-            </div>
-        </div>
-        
-        <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Pluto Orbit:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
-            </div>
-        </div>
+        ${payload_weightsCantidadHtml}
         
         <div class="iG2Element">
             <div class="iG2ElementSection">
                 <p class="iG2ElementText">Rocket Height:</p>
             </div>
             <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
+                <p class="iG2ElementText">${heightMeters} M</p>
             </div>
             <div class="iG2ElementSection">
                 <div class="bar"><div class="barProgress"></div></div>
             </div>
             <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
+                <p class="iG2ElementText">${heightFeets} F</p>
             </div>
         </div>
 
@@ -318,59 +340,17 @@ export const Rocket = async() =>{
                 <p class="iG2ElementText">Rocket diameter:</p>
             </div>
             <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
+                <p class="iG2ElementText">${diameterMeters} M</p>
             </div>
             <div class="iG2ElementSection">
                 <div class="bar"><div class="barProgress"></div></div>
             </div>
             <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
+                <p class="iG2ElementText">${diameterFeets} F</p>
             </div>
         </div>
 
-        <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Diameter rocket shield:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
-            </div>
-        </div>
-                <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Heihgt Rocket Shield:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
-            </div>
-        </div>
-
-        <div class="iG2Element">
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">Heihgt Rocket Shield:</p>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 M</p>
-            </div>
-            <div class="iG2ElementSection">
-                <div class="bar"><div class="barProgress"></div></div>
-            </div>
-            <div class="iG2ElementSection">
-                <p class="iG2ElementText">0 F</p>
-            </div>
-        </div>
+        ${shieldHtml}
 
     </div>
     <div id="navigationNumbersCenter" class="mGS3Section">
