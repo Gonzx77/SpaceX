@@ -106,6 +106,7 @@ export const Capsule = async(i) =>{
                     <div class="imagesGalery">
                         ${capsuleImg}
                     </div>
+                    <p id="allLaunches">All Launches</p>
                 </div>
                 <div class="mGS2SGGridSection">
                     <div class="mGS2SGGSDiv">

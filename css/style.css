@@ -16,10 +16,10 @@
 }
 
 body{
+    overflow: hidden;
     height: 100vh;
-    background: linear-gradient(var(--color-b1), var(--color-b2));
+    background: #0A0624;
 }
-
 
 
 
@@ -257,6 +257,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .imagesGalery{
     gap: 10px;
@@ -342,4 +343,11 @@ body{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+}
+
+#allLaunches{
+    font-family: "Bold", sans-serif;
+    margin-top: 40px;
+    color: #ffffff;
+    font-size: 40px;
 }
