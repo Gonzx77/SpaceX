@@ -7,6 +7,7 @@ import { getRockets } from "./modules/app.js";
 await footer();
 await Rocket(0);
 await Rockets_menu();
+await menu();
 
 const setFooter = async(element) => {
     let padre = element;
@@ -43,6 +44,7 @@ const openCapsulas = async(element)=>{
     await setFooter(element);
     await Capsule(0)
     await Cpasules_menu();
+    await menu();
 };
 document.openCapsulas = openCapsulas;
 
