@@ -8,7 +8,7 @@ export const menu = async() =>{
         }
     }
 
-    hijos[0].style.backgroundColor = "#16182E";
+    hijos[0].style.backgroundColor = "#c300ff";
 
 };
 
@@ -18,7 +18,7 @@ export const changeMenu = async(id) =>{
 
     for (let i = 0; i < hijos.length; i++) {
         if (hijos[i].id == id){
-            hijos[i].style.backgroundColor = "#16182E";
+            hijos[i].style.backgroundColor = "#c300ff";
         }else{
             hijos[i].style.backgroundColor = "";
         }

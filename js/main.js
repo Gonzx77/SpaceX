@@ -56,3 +56,31 @@ const setMenuCapsule = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuCapsule = setMenuCapsule;
+
+
+
+
+
+
+
+document.addEventListener("mousemove", function(event) {
+    var logo = document.querySelector("#backgroundImd");
+
+    var mouseX = event.clientX;
+    var mouseY = event.clientY;
+
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+
+    var centerX = windowWidth / 2;
+    var centerY = windowHeight / 2;
+
+    var distanceFromCenterX = centerX - mouseX;
+    var distanceFromCenterY = centerY - mouseY;
+
+    var maxOffset = 10;
+    var offsetX = (distanceFromCenterX / centerX) * maxOffset;
+    var offsetY = (distanceFromCenterY / centerY) * maxOffset;
+
+    logo.style.transform = "translate(" + offsetX + "px, " + offsetY + "px)";
+});

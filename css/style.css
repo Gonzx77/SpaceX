@@ -18,8 +18,16 @@
 body{
     overflow: hidden;
     height: 100vh;
-    background: #0A0624;
+    background: #000000;
 }
+
+#backgroundImd{
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+}
+
 
 
 
@@ -27,7 +35,7 @@ body{
     display: grid;
     grid-template-rows: 1;
     grid-template-columns: repeat(9, 1fr);
-    box-shadow: 0px 0px 20px 4px var(--color-1);
+    box-shadow: 0px 0px 60px 20px var(--color-1);
     position: fixed;
     bottom: 0;
     width: 800px;
@@ -130,6 +138,7 @@ body{
     flex-direction: column;
     overflow: hidden;
     overflow-y: auto;
+    scrollbar-color: var(--color-3) var(--color-1);
 }
 .iG1Element{
     display: grid;
@@ -219,12 +228,17 @@ body{
 
 
 .infoFlex{
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #00000020;
+    backdrop-filter: blur(2px);
     gap: 4px;
     width: 90%;
     height: 26vh;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    scrollbar-color: var(--color-3) var(--color-1);
 }
 .iFEText{
     font-size: 16px;
@@ -273,6 +287,7 @@ body{
 
 
 .circleDiv{
+    backdrop-filter: blur(2px);
     position: relative;
 }
 .circleSvg{
@@ -280,7 +295,7 @@ body{
     height: 170px;
 }
 .circle{
-    fill: var(--color-1);
+    fill: #00000020;
     stroke: var(--color-3);
     stroke-width: 10px;
     transform-origin: 50%;
@@ -319,6 +334,7 @@ body{
     overflow-x: auto;
     width: 18vw;
     height: 14vh;
+    scrollbar-color: var(--color-3) var(--color-1);
 }
 .navigationNumbersGrid{
     display: grid;
@@ -335,7 +351,7 @@ body{
     font-family: "Bold", sans-serif;
 }
 .navigationNumber:hover{
-    background-color: var(--color-4-2);
+    background-color: var(--color-4);
 }
 
 #flexRight{
@@ -343,6 +359,7 @@ body{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    scrollbar-color: var(--color-3) var(--color-1);
 }
 
 #allLaunches{
