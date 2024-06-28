@@ -6,16 +6,11 @@ export const Rockets_menu = async() =>{
     let rockets = await getRockets();
     let number = 1;
 
-    let cont = 0;
-    if (rockets.length > 12){
-        cont = 12;
-    }else{
-        cont = rockets.length;
-    }
+    let cont = rockets.length;
 
     for (let i = 0; i < cont; i++){
         let plantilla = `
-        <div onclick="setMenu(this)" id="${number}" class="navigationNumber">
+        <div onclick="setMenuRocket(this)" id="${number}" class="navigationNumber">
             ${number}
         </div>`;
 
