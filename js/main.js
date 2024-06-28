@@ -8,6 +8,13 @@ await footer();
 await Rocket(0);
 await Rockets_menu();
 await menu();
+let container = document.querySelector("#actualInfoText");
+container.innerHTML = "Rockets";
+
+const actualInfo = async(text) =>{
+    let container = document.querySelector("#actualInfoText");
+    container.innerHTML = text;
+};
 
 const setFooter = async(element) => {
     let padre = element;
@@ -31,6 +38,7 @@ const openRockets = async(element) =>{
     await Rocket(0);
     await Rockets_menu();
     await menu();
+    await actualInfo("Rockets");
 };
 document.openRockets = openRockets;
 
@@ -45,6 +53,7 @@ const openCapsulas = async(element)=>{
     await Capsule(0)
     await Cpasules_menu();
     await menu();
+    await actualInfo("Capsules");
 };
 document.openCapsulas = openCapsulas;
 
