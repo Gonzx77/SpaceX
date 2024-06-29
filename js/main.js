@@ -75,6 +75,7 @@ document.setMenuCapsule = setMenuCapsule;
 document.addEventListener("mousemove", function(event) {
     var logo = document.querySelector("#backgroundImd");
     let galaxyImg = document.querySelector("#galaxyImg");
+    let infinite = document.querySelector("#infinite");
 
     var mouseX = event.clientX;
     var mouseY = event.clientY;
@@ -96,4 +97,5 @@ document.addEventListener("mousemove", function(event) {
 
     logo.style.transform = "translate(" + offsetX + "px, " + offsetY + "px)";
     galaxyImg.style.transform = "translate(" + offsetX2 + "px, " + offsetY2 + "px)";
+    infinite.style.transform = "translate(" + offsetX2 + "px, " + offsetY2 + "px) rotate(20deg)";
 });

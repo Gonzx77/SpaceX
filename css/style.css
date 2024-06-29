@@ -35,6 +35,13 @@ body{
     margin-left: 52%;
     z-index: -1;
 }
+#infinite{
+    position: absolute;
+    margin-top: 20%;
+    margin-left: 6%;
+    width: 240px;
+    z-index: -1;
+}
 
 
 #actualInfo{
@@ -44,11 +51,10 @@ body{
     flex-direction: row;
     align-items: center;
     position: absolute;
-    width: 400px;
     height: 50px;
     padding: 10px;
     border-radius: 20px;
-    background-color: #00000040;
+    background-color: #00000090;
     backdrop-filter: blur(2px);
 }
 #actualInfoLine{
@@ -173,7 +179,7 @@ body{
     flex-direction: column;
     overflow: hidden;
     overflow-y: auto;
-    scrollbar-color: var(--color-3) var(--color-1);
+    scrollbar-color: var(--color-1) var(--color-0);
 }
 .iG1Element{
     display: grid;
@@ -265,7 +271,7 @@ body{
 .infoFlex{
     padding: 20px;
     border-radius: 20px;
-    background-color: #00000020;
+    background-color: #00000060;
     backdrop-filter: blur(2px);
     gap: 4px;
     width: 90%;
@@ -273,7 +279,7 @@ body{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    scrollbar-color: var(--color-3) var(--color-1);
+    scrollbar-color: var(--color-1) var(--color-0);
 }
 .iFEText{
     font-size: 16px;
@@ -309,20 +315,26 @@ body{
     flex-direction: column;
 }
 .imagesGalery{
+    background-color: #00000020;
+    backdrop-filter: blur(2px);
+    box-shadow: 0px 0px 30px 4px black;
     gap: 10px;
     display: flex;
     overflow: hidden;
     overflow-x: auto;
+    scrollbar-color: var(--color-1) var(--color-0);
     width: 80%;
     height: 240px;
 }
 .rocketImg{
+    transform: scale(0.9);
     width: 100%;
 }
 
 
 .circleDiv{
     backdrop-filter: blur(2px);
+    border-radius: 50%;
     position: relative;
 }
 .circleSvg{
@@ -330,7 +342,7 @@ body{
     height: 170px;
 }
 .circle{
-    fill: #00000020;
+    fill: #00000060;
     stroke: var(--color-3);
     stroke-width: 10px;
     transform-origin: 50%;
@@ -369,7 +381,7 @@ body{
     overflow-x: auto;
     width: 18vw;
     height: 14vh;
-    scrollbar-color: var(--color-3) var(--color-1);
+    scrollbar-color: var(--color-1) var(--color-0);
 }
 .navigationNumbersGrid{
     display: grid;
@@ -394,7 +406,7 @@ body{
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    scrollbar-color: var(--color-3) var(--color-1);
+    scrollbar-color: var(--color-1) var(--color-0);
 }
 
 #allLaunches{
