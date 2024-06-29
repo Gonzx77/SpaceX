@@ -2,6 +2,7 @@ import { footer, changeFooter } from "./modules/footer.js";
 import { menu, changeMenu } from "./modules/menu.js";
 import { Rockets_menu, Rocket } from "./modules/maquetar/rockets.js";
 import { Cpasules_menu, Capsule } from "./modules/maquetar/capsule.js";
+import { Launch } from "./modules/maquetar/launch.js";
 import { getRockets } from "./modules/app.js";
 
 await footer();
@@ -34,6 +35,7 @@ const setMenuRocket = async(element) =>{
 document.setMenuRocket = setMenuRocket;
 
 const openRockets = async(element) =>{
+
     await setFooter(element);
     await Rocket(0);
     await Rockets_menu();
@@ -47,7 +49,6 @@ document.openRockets = openRockets;
 
 
 const openCapsulas = async(element)=>{
-    let id = element.id;
 
     await setFooter(element);
     await Capsule(0)
@@ -65,6 +66,19 @@ const setMenuCapsule = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuCapsule = setMenuCapsule;
+
+
+
+
+
+const openLaunches = async(element)=>{
+
+    await setFooter(element);
+    await Launch(0);
+    await actualInfo("Launches");
+
+};
+document.openLaunches = openLaunches;
 
 
 

@@ -1,29 +1,26 @@
-import { getCapsules } from "../app.js";
-import { getLaunch } from "../app.js";
+import { getLaunches } from "../app.js";
 
-export const Cpasules_menu = async() =>{
-    let container = document.querySelector(".navigationNumbersGrid");
-    container.innerHTML = "";
-    let capsules = await getCapsules();
-    let number = 1;
+export const Launch = async(i) =>{
+    let launches = await getLaunches();
+    let launch = launches[0];
+    console.log(launch);
 
-    let cont = capsules.length;
+    let failures = launch.failures;
+    let failuresCantidad = launch.failures.length;
 
-    for (let i = 0; i < cont; i++){
-        let plantilla = `
-        <div onclick="setMenuCapsule(this)" id="${number}" class="navigationNumber">
-            ${number}
-        </div>`;
 
-        number ++;
-        container.innerHTML += plantilla;
-    }
-};
+    let altitude = "";
+    let time = "";
+    let reason = "";
+    if (failures[0]){
+        for (let i = 0; i < failuresCantidad; i++){
+            let failure = failures[i];
 
-export const Capsule = async(i) =>{
-    let capsules = await getCapsules();
-    let capsule = capsules[i];
-    console.log(capsule);
+            altitude = failure.altitude;
+            time = failure.time;
+            reason = failure.reason;
+        }
+    };
 
     let mGS1 = document.querySelector("#mGS1");
     let mGS2 = document.querySelector("#mGS2");
@@ -33,38 +30,18 @@ export const Capsule = async(i) =>{
     mGS2.innerHTML = "";
     mGS3.innerHTML = "";
 
-    let type = capsule.type;
-    let serial = capsule.serial;
-    let status = capsule.status;
-    let water_landings = capsule.water_landings;
-    let land_landings = capsule.land_landings;
-    let launches = capsule.launches;
-    let reuse_count = capsule.reuse_count;
-
-    let launchesCantidad = 0;
-    let capsuleImg = "";
-    if (launches[0]){
-        launchesCantidad = launches.length;
-        for (let i = 0; i < launchesCantidad; i++){
-            let launch = await getLaunch(launches[i]);
-            let img = launch.links.patch.large;
-            capsuleImg += `
-            <img class="rocketImg" src="${img}" referrerpolicy="no-referrer">`; 
-        };
-    }else{
-        capsuleImg = `<img class="rocketImg" src="storage/media/footer/launch.png" referrerpolicy="no-referrer">`; 
-    }
+    let capsuleImg = `<img class="rocketImg" src="storage/media/footer/rocket.svg" referrerpolicy="no-referrer">`; 
 
     let plantilla1 = `
         <div id="centerTitle" class="mGS2Section">
-                <h1 id="mainTitle">${type} ${serial}</h1>
+                <h1 id="mainTitle">Launch</h1>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
-                            <span id="circleTitleMargin">Launches</span>
-                            <span class="circleInfo">${launchesCantidad}</span>
+                            <span id="circleTitleMargin">Total Failures</span>
+                            <span class="circleInfo">${failuresCantidad}</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="percent_sea_level} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -75,7 +52,7 @@ export const Capsule = async(i) =>{
                     <div class="circleDiv">
                         <p class="circeTitle">
                             <span id="circleTitleMargin">Reuse count</span>
-                            <span class="circleInfo">${reuse_count}</span>
+                            <span class="circleInfo">C Info 2</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -90,16 +67,16 @@ export const Capsule = async(i) =>{
                     </div>
                     <div class="mGS2SGGSDiv">
                         <div class="infoFlex">
-                            <p class="infoFlexTitle">LANDINGS INFORMATION</p>
+                            <p class="infoFlexTitle">FAILURES INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Water</p><p class="iFEText Right">${water_landings}</p>
+                                <p class="iFEText Left">Altitude</p><p class="iFEText Right">${altitude}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Land</p><p class="iFEText Right">${land_landings}</p>
+                                <p class="iFEText Left">Time</p><p class="iFEText Right">${time}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Launches</p><p class="iFEText Right">${launchesCantidad}</p>
+                                <p class="iFEText Left">Reason</p><p class="iFEText Right">${reason}</p>
                             </div>
                         </div>
                     </div>
@@ -119,13 +96,13 @@ export const Capsule = async(i) =>{
                             <p class="infoFlexTitle">CAPSULE INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">${type}</p>
+                                <p class="iFEText Left">Type</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Serial</p><p class="iFEText Right">${serial}</p>
+                                <p class="iFEText Left">Serial</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Estatus</p><p class="iFEText Right">${status}</p>
+                                <p class="iFEText Left">Estatus</p><p class="iFEText Right">0</p>
                             </div>
                         </div>
                     </div>
