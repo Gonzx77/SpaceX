@@ -52,7 +52,7 @@ export const Capsule = async(i) =>{
             <img class="rocketImg" src="${img}" referrerpolicy="no-referrer">`; 
         };
     }else{
-        capsuleImg = `<img class="rocketImg" src="storage/media/footer/launch.png" referrerpolicy="no-referrer">`; 
+        capsuleImg = `<img class="rocketImg" src="storage/media/footer/capsule.svg" referrerpolicy="no-referrer">`; 
     }
 
     let plantilla1 = `

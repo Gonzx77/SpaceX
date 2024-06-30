@@ -1,14 +1,19 @@
 import { footer, changeFooter } from "./modules/footer.js";
 import { menu, changeMenu } from "./modules/menu.js";
-import { Rockets_menu, Rocket } from "./modules/maquetar/rockets.js";
+import { Rockets_menu, Rocket, RocketID } from "./modules/maquetar/rockets.js";
 import { Cpasules_menu, Capsule } from "./modules/maquetar/capsule.js";
-import { Launch } from "./modules/maquetar/launch.js";
-import { getRockets } from "./modules/app.js";
+import { Launches_menu, Launch } from "./modules/maquetar/launch.js";
 
 await footer();
 await Rocket(0);
 await Rockets_menu();
 await menu();
+
+const openRocketID = async(id) =>{
+    await RocketID(id);
+};
+document.openRocketID = openRocketID;
+
 let container = document.querySelector("#actualInfoText");
 container.innerHTML = "Rockets";
 
@@ -75,10 +80,21 @@ const openLaunches = async(element)=>{
 
     await setFooter(element);
     await Launch(0);
+    await Launches_menu();
+    await menu();
     await actualInfo("Launches");
 
 };
 document.openLaunches = openLaunches;
+
+const setMenuLaunches = async(element) =>{
+    let id = element.id;
+
+    await Launch(id - 1);
+    await Launches_menu();
+    await changeMenu(id);
+};
+document.setMenuLaunches = setMenuLaunches;
 
 
 

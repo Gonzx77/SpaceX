@@ -370,6 +370,11 @@ body{
     font-family: "Regular", sans-serif;
     font-size: 14px;
 }
+.circleInfo2{
+    color: var(--color-3);
+    font-family: "Regular", sans-serif;
+    font-size: 14px;
+}
 
 
 #navigationNumbersCenter{

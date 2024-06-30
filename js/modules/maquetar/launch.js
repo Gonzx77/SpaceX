@@ -1,24 +1,79 @@
-import { getLaunches } from "../app.js";
+import { getLaunches, getRocket } from "../app.js";
+
+
+export const Launches_menu = async() =>{
+    let container = document.querySelector(".navigationNumbersGrid");
+    container.innerHTML = "";
+    let launches = await getLaunches();
+    let number = 1;
+
+    let cont = launches.length;
+
+    for (let i = 0; i < cont; i++){
+        let plantilla = `
+        <div onclick="setMenuLaunches(this)" id="${number}" class="navigationNumber">
+            ${number}
+        </div>`;
+
+        number ++;
+        container.innerHTML += plantilla;
+    }
+};
 
 export const Launch = async(i) =>{
     let launches = await getLaunches();
-    let launch = launches[0];
-    console.log(launch);
+    let launch = launches[i];
+    let launchRocketID = launch.rocket;
+    let rocket = await getRocket(launchRocketID);
 
     let failures = launch.failures;
     let failuresCantidad = launch.failures.length;
 
+    let imageUrl = launch.links.patch.large;
+    let htmlImages = "";
 
-    let altitude = "";
-    let time = "";
-    let reason = "";
+    if (imageUrl) {
+        htmlImages = `
+            <img class="rocketImg" src="${imageUrl}" referrerpolicy="no-referrer">`;
+    }else{
+        htmlImages = `<img class="rocketImg" src="storage/media/footer/launch.png" referrerpolicy="no-referrer">`;
+    }
+
+
+
+
+    let namee = launch.name;
+    let details = launch.details;
+
+
+    let rocketNamee = rocket.name;
+    let rocketType = rocket.type;
+    let rocketWikipedia = rocket.wikipedia;
+
+
+    let mGS1Element = "";
     if (failures[0]){
         for (let i = 0; i < failuresCantidad; i++){
             let failure = failures[i];
 
-            altitude = failure.altitude;
-            time = failure.time;
-            reason = failure.reason;
+            let altitude = failure.altitude;
+            let time = failure.time;
+            let reason = failure.reason;
+
+            mGS1Element += `
+                <div class="iG1Element">
+                    <div class="iG1ElementImg">
+                        <img class="iG1Img" src="storage/media/images/point.png">
+                    </div>
+                    <div class="iG1ElementTitle">
+                        <p class="iG1Title">Failure #${i + 1}</p>
+                        <p class="iG1Text">Time: ${time}</p>
+                        <br>
+                        <p class="iG1Text">Altitude: ${altitude}</p>
+                        <br>
+                        <p class="iG1Text">Reason: ${reason}</p>
+                    </div>
+                </div>`;
         }
     };
 
@@ -30,11 +85,70 @@ export const Launch = async(i) =>{
     mGS2.innerHTML = "";
     mGS3.innerHTML = "";
 
-    let capsuleImg = `<img class="rocketImg" src="storage/media/footer/rocket.svg" referrerpolicy="no-referrer">`; 
+    let shieldHtml = 
+        `
+    <div class="iG2Element">
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">Diameter rocket shield:</p>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">0 M</p>
+        </div>
+        <div class="iG2ElementSection">
+            <div class="bar"><div class="barProgress" style="width: 0%"></div></div>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">0 F</p>
+        </div>
+    </div>
+    <div class="iG2Element">
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">Heihgt Rocket Shield:</p>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">0 M</p>
+        </div>
+        <div class="iG2ElementSection">
+            <div class="bar"><div class="barProgress" style="width: 0%"></div></div>
+        </div>
+        <div class="iG2ElementSection">
+            <p class="iG2ElementText">0 F</p>
+        </div>
+        </div>`;
+
+    let payload_weightsCantidadHtml = `
+        <div class="iG2Element">
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0</p>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 kg</p>
+            </div>
+            <div class="iG2ElementSection">
+                <div class="bar"><div style="width: 0%" class="barProgress"></div></div>
+            </div>
+            <div class="iG2ElementSection">
+                <p class="iG2ElementText">0 lb</p>
+            </div>
+        </div>`;
+
+
+
+
 
     let plantilla1 = `
-        <div id="centerTitle" class="mGS2Section">
-                <h1 id="mainTitle">Launch</h1>
+        <div class="mGS1Section"></div>
+        <div class="mGS1Section">
+            <div class="infoGalery1">
+                        ${mGS1Element}
+            </div>
+        </div>
+        `;
+    mGS1.innerHTML = plantilla1;
+
+    let plantilla2 = `
+                <div id="centerTitle" class="mGS2Section">
+                <h1 id="mainTitle">${namee}</h1>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 <div class="infoCirclesDiv">
@@ -44,18 +158,19 @@ export const Launch = async(i) =>{
                             <span class="circleInfo">${failuresCantidad}</span>
                         </p>
                         <svg class="circleSvg">
-                            <circle class="circle" stroke-dasharray="percent_sea_level} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
+                            <circle class="circle" stroke-dasharray="101 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
                         </svg>
                     </div>
                 </div>
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
-                            <span id="circleTitleMargin">Reuse count</span>
-                            <span class="circleInfo">C Info 2</span>
+                            <span id="circleTitleMargin">Launch Rocket</span>
+                            <span class="circleInfo">${rocketNamee}</span>
+                            <span class="circleInfo2" onclick="openRocketID('${launchRocketID}')">Open Rocket</span>
                         </p>
                         <svg class="circleSvg">
-                            <circle class="circle" stroke-dasharray="thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
+                            <circle class="circle" stroke-dasharray="101 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
                         </svg>
                     </div>
                 </div>
@@ -67,25 +182,21 @@ export const Launch = async(i) =>{
                     </div>
                     <div class="mGS2SGGSDiv">
                         <div class="infoFlex">
-                            <p class="infoFlexTitle">FAILURES INFORMATION</p>
+                            <p class="infoFlexTitle">LAUNCH INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Altitude</p><p class="iFEText Right">${altitude}</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">${namee}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Time</p><p class="iFEText Right">${time}</p>
-                            </div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Reason</p><p class="iFEText Right">${reason}</p>
+                                <p class="iFEText Left">Details</p><p class="iFEText Right">${details}</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="imagesGaleryCenter" class="mGS2SGGridSection">
                     <div class="imagesGalery">
-                        ${capsuleImg}
+                        ${htmlImages}
                     </div>
-                    <p id="allLaunches">All Launches</p>
                 </div>
                 <div class="mGS2SGGridSection">
                     <div class="mGS2SGGSDiv">
@@ -93,16 +204,16 @@ export const Launch = async(i) =>{
                     </div>
                     <div class="mGS2SGGSDiv">
                         <div class="infoFlex">
-                            <p class="infoFlexTitle">CAPSULE INFORMATION</p>
+                            <p class="infoFlexTitle">ROCKET INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">${rocketNamee}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Serial</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Type</p><p class="iFEText Right">${rocketType}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Estatus</p><p class="iFEText Right">0</p>
+                                <a href="${rocketWikipedia}" target="_blank"><p class="iFEText Left">Wikipedia</p><p class="iFEText Right">Open</p></a>
                             </div>
                         </div>
                     </div>
@@ -110,9 +221,10 @@ export const Launch = async(i) =>{
             </div>
             <div class="mGS2Section">
 
-            </div>
-    `;
-    let plantilla2 = `
+        </div>`;
+    mGS2.innerHTML = plantilla2;
+
+    let plantilla3 = `
     <div class="mGS3Section"></div>
     <div id="flexRight" class="mGS3Section">
 
@@ -126,6 +238,5 @@ export const Launch = async(i) =>{
     </div>
     `;
 
-    mGS2.innerHTML = plantilla1;
-    mGS3.innerHTML = plantilla2;
-};
+    mGS3.innerHTML = plantilla3;
+}

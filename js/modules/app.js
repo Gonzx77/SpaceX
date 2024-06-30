@@ -43,3 +43,14 @@ let data = await fetch(url, options);
 let res = data.json();
 return res;
 }
+
+export const getRocket = async(id) =>{
+    const url = `https://api.spacexdata.com/v4/rockets/${id}`;
+    const options = {
+    method: 'GET'
+};
+
+let data = await fetch(url, options);
+let res = data.json();
+return res;
+}
