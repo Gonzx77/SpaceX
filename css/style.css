@@ -306,6 +306,12 @@ body{
     margin-right: 10px;
     float: right;
 }
+.Right2{
+    font-family: "Bold", sans-serif;
+    color: var(--color-3);
+    margin-right: 10px;
+    float: right;
+}
 
 
 #imagesGaleryCenter{
@@ -419,4 +425,8 @@ body{
     margin-top: 40px;
     color: #ffffff;
     font-size: 40px;
+}
+
+.openBtn{
+    color: var(--color-3);
 }

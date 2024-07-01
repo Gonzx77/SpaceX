@@ -1,8 +1,10 @@
 import { footer, changeFooter } from "./modules/footer.js";
 import { menu, changeMenu } from "./modules/menu.js";
+
 import { Rockets_menu, Rocket, RocketID } from "./modules/maquetar/rockets.js";
 import { Cpasules_menu, Capsule } from "./modules/maquetar/capsule.js";
-import { Launches_menu, Launch } from "./modules/maquetar/launch.js";
+import { Launches_menu, Launch, LaunchID } from "./modules/maquetar/launch.js";
+import { Crew_menu, Crew } from "./modules/maquetar/crew.js";
 
 await footer();
 await Rocket(0);
@@ -13,6 +15,10 @@ const openRocketID = async(id) =>{
     await RocketID(id);
 };
 document.openRocketID = openRocketID;
+const openLaunchID = async(id) =>{
+    await LaunchID(id);
+};
+document.openLaunchID = openLaunchID;
 
 let container = document.querySelector("#actualInfoText");
 container.innerHTML = "Rockets";
@@ -95,6 +101,30 @@ const setMenuLaunches = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuLaunches = setMenuLaunches;
+
+
+
+
+
+const openCrew = async(element)=>{
+
+    await setFooter(element);
+    await Crew(0);
+    await Crew_menu();
+    await menu();
+    await actualInfo("Crew");
+
+};
+document.openCrew = openCrew;
+
+const setMenuCrew = async(element) =>{
+    let id = element.id;
+
+    await Crew(id - 1);
+    await Crew_menu();
+    await changeMenu(id);
+};
+document.setMenuCrew = setMenuCrew;
 
 
 

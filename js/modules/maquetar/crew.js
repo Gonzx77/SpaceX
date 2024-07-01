@@ -1,17 +1,16 @@
-import { getCapsules } from "../app.js";
-import { getLaunch } from "../app.js";
+import { getCrews, getLaunch, getRocket } from "../app.js";
 
-export const Cpasules_menu = async() =>{
+export const Crew_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
-    let capsules = await getCapsules();
+    let crew = await getCrews();
     let number = 1;
 
-    let cont = capsules.length;
+    let cont = crew.length;
 
     for (let i = 0; i < cont; i++){
         let plantilla = `
-        <div onclick="setMenuCapsule(this)" id="${number}" class="navigationNumber">
+        <div onclick="setMenuCrew(this)" id="${number}" class="navigationNumber">
             ${number}
         </div>`;
 
@@ -20,9 +19,25 @@ export const Cpasules_menu = async() =>{
     }
 };
 
-export const Capsule = async(i) =>{
-    let capsules = await getCapsules();
-    let capsule = capsules[i];
+export const Crew = async(i) =>{
+    let crew = await getCrews();
+    let member = crew[i];
+
+
+    let namee = member.name;
+    let agency = member.agency;
+    let status = member.status;
+    let launchesCantidad = member.launches.length;
+    let wikipedia = member.wikipedia;
+    let img = member.image;
+
+    let launchID = member.launches[0];
+    let launch = await getLaunch(launchID);
+
+    let launchName = launch.name;
+
+    let rocketID = launch.rocket;
+
 
     let mGS1 = document.querySelector("#mGS1");
     let mGS2 = document.querySelector("#mGS2");
@@ -32,31 +47,34 @@ export const Capsule = async(i) =>{
     mGS2.innerHTML = "";
     mGS3.innerHTML = "";
 
-    let type = capsule.type;
-    let serial = capsule.serial;
-    let status = capsule.status;
-    let water_landings = capsule.water_landings;
-    let land_landings = capsule.land_landings;
-    let launches = capsule.launches;
-    let reuse_count = capsule.reuse_count;
+    let capsuleImg = `<img class="rocketImg" src="${img}" referrerpolicy="no-referrer">`; 
 
-    let launchesCantidad = 0;
-    let capsuleImg = "";
-    if (launches[0]){
-        launchesCantidad = launches.length;
-        for (let i = 0; i < launchesCantidad; i++){
-            let launch = await getLaunch(launches[i]);
-            let img = launch.links.patch.large;
-            capsuleImg += `
-            <img class="rocketImg" src="${img}" referrerpolicy="no-referrer">`; 
-        };
-    }else{
-        capsuleImg = `<img class="rocketImg" src="storage/media/footer/capsule.svg" referrerpolicy="no-referrer">`; 
-    }
+    let mGS1Element = `
+    <div class="iG1Element">
+        <div class="iG1ElementImg">
+            <img class="iG1Img" src="storage/media/images/point.png">
+        </div>
+        <div class="iG1ElementTitle">
+            <p class="iG1Title">Launch #1</p>
+            <p class="iG1Text">Name: ${launchName}</p>
+            <br>
+            <p class="iG1Text">Launch: <span onclick="openLaunchID('${launchID}')" class="openBtn">Open</span></p>
+            <br>
+            <p class="iG1Text">Rocket: <span onclick="openRocketID('${rocketID}')" class="openBtn">Open</span></p>
+        </div>
+    </div>`;
 
     let plantilla1 = `
+        <div class="mGS1Section"></div>
+        <div class="mGS1Section">
+            <div class="infoGalery1">
+                        ${mGS1Element}
+            </div>
+        </div>
+        `;
+    let plantilla2 = `
         <div id="centerTitle" class="mGS2Section">
-                <h1 id="mainTitle">${type} ${serial}</h1>
+                <h1 id="mainTitle">${namee}</h1>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 <div class="infoCirclesDiv">
@@ -73,8 +91,8 @@ export const Capsule = async(i) =>{
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
-                            <span id="circleTitleMargin">Reuse count</span>
-                            <span class="circleInfo">${reuse_count}</span>
+                            <span id="circleTitleMargin">Status</span>
+                            <span class="circleInfo">${status}</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -89,16 +107,16 @@ export const Capsule = async(i) =>{
                     </div>
                     <div class="mGS2SGGSDiv">
                         <div class="infoFlex">
-                            <p class="infoFlexTitle">LANDINGS INFORMATION</p>
+                            <p class="infoFlexTitle">MEMBER INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Water</p><p class="iFEText Right">${water_landings}</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">${namee}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Land</p><p class="iFEText Right">${land_landings}</p>
+                                <p class="iFEText Left">Agency</p><p class="iFEText Right">${agency}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Launches</p><p class="iFEText Right">${launchesCantidad}</p>
+                                <a href="${wikipedia}" target="_blank"><p class="iFEText Left">Wikipedia</p><p class="iFEText Right2">Open</p></a>
                             </div>
                         </div>
                     </div>
@@ -107,26 +125,13 @@ export const Capsule = async(i) =>{
                     <div class="imagesGalery">
                         ${capsuleImg}
                     </div>
-                    <p id="allLaunches">All Launches</p>
                 </div>
                 <div class="mGS2SGGridSection">
                     <div class="mGS2SGGSDiv">
 
                     </div>
                     <div class="mGS2SGGSDiv">
-                        <div class="infoFlex">
-                            <p class="infoFlexTitle">CAPSULE INFORMATION</p>
-                            <div class="line"></div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">${type}</p>
-                            </div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Serial</p><p class="iFEText Right">${serial}</p>
-                            </div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Estatus</p><p class="iFEText Right">${status}</p>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -134,7 +139,7 @@ export const Capsule = async(i) =>{
 
             </div>
     `;
-    let plantilla2 = `
+    let plantilla3 = `
     <div class="mGS3Section"></div>
     <div id="flexRight" class="mGS3Section">
 
@@ -148,6 +153,7 @@ export const Capsule = async(i) =>{
     </div>
     `;
 
-    mGS2.innerHTML = plantilla1;
-    mGS3.innerHTML = plantilla2;
+    mGS1.innerHTML = plantilla1;
+    mGS2.innerHTML = plantilla2;
+    mGS3.innerHTML = plantilla3;
 };
