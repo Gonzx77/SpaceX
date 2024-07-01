@@ -1,10 +1,19 @@
+**SpaceX**
+Este proyecto tiene como objetivo estructurar la información proporcionada por una API externa llamada SpaceX.
+
 **Testeo de API:**
 
-La API permite el acceso a mucha infomacion de SpaceX
+La API proporciona acceso a una gran cantidad de información sobre SpaceX. Ofrece una variedad de opciones que se pueden ajustar al realizar una solicitud 'GET'. Las más importantes son:
 
-La API cuenta con una variedad de opciones que se pueden editar al momento de hacer el request 'GET'
-entre los mas importantes estan:
+- "limit": Permite establecer un límite en la cantidad de elementos obtenidos.
+- "totalPages": Permite definir la cantidad de páginas de elementos obtenidos.
+- "page": Permite seleccionar la página específica para realizar la consulta.
 
-- "limit" : Permite establecer un limite de elementos obtenidos.
-- "totalPages" : Permite establecer la cantidad de paginas de elementos obtenidos.
-- "page" : Permite establecer la pagina en la cual se quiere realizar la consulta.
+**Funcionalidad**
+
+Actualmente, solo hay disponibles 4 de las 14 pestañas. Estas son:
+
+- Rockets.
+- Capsules.
+- Launches.
+- Crew.
