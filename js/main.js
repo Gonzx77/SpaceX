@@ -5,11 +5,14 @@ import { Rockets_menu, Rocket, RocketID } from "./modules/maquetar/rockets.js";
 import { Cpasules_menu, Capsule } from "./modules/maquetar/capsule.js";
 import { Launches_menu, Launch, LaunchID } from "./modules/maquetar/launch.js";
 import { Crew_menu, Crew } from "./modules/maquetar/crew.js";
+import { Ship } from "./modules/maquetar/ships.js";
 
-await footer();
-await Rocket(0);
-await Rockets_menu();
-await menu();
+// await footer();
+// await Rocket(0);
+// await Rockets_menu();
+// await menu();
+
+await Ship();
 
 const openRocketID = async(id) =>{
     await RocketID(id);
