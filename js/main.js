@@ -10,7 +10,7 @@ import { Landpads_menu, Landpad } from "./modules/maquetar/landpads.js";
 import { Roadster } from "./modules/maquetar/roadsters.js";
 import { Starlinks_menu, Starlink } from "./modules/maquetar/starlinks.js";
 import { Payloads_menu, Payload } from "./modules/maquetar/payloads.js";
-
+import { Launchpads_menu, Launchpad } from "./modules/maquetar/launchpads.js"
 
 await footer();
 await Rocket(0);
@@ -240,6 +240,30 @@ const setMenuPayloads = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuPayloads = setMenuPayloads;
+
+
+
+
+
+const openLaunchpad = async(element)=>{
+
+    await setFooter(element);
+    await Launchpad(0);
+    await Launchpads_menu();
+    await menu();
+    await actualInfo("Launchpads");
+
+};
+document.openLaunchpad = openLaunchpad;
+
+const setMenuLaunchpad = async(element) =>{
+    let id = element.id;
+
+    await Launchpad(id - 1);
+    await Launchpads_menu();
+    await changeMenu(id);
+};
+document.setMenuLaunchpad = setMenuLaunchpad;
 
 
 
