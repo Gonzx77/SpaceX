@@ -330,12 +330,12 @@ body{
     overflow: hidden;
     overflow-x: auto;
     scrollbar-color: var(--color-1) var(--color-0);
-    width: 80%;
-    height: 240px;
+    width: 300px;
+    height: 300px;
 }
 .rocketImg{
     transform: scale(0.9);
-    width: 100%;
+    width: 300px;
 }
 
 
