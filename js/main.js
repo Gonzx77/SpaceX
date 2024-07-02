@@ -12,11 +12,10 @@ import { Starlinks_menu, Starlink } from "./modules/maquetar/starlinks.js";
 import { Payloads_menu, Payload } from "./modules/maquetar/payloads.js";
 
 
-await Payload();
-// await footer();
-// await Rocket(0);
-// await Rockets_menu();
-// await menu();
+await footer();
+await Rocket(0);
+await Rockets_menu();
+await menu();
 
 const openRocketID = async(id) =>{
     await RocketID(id);
@@ -217,6 +216,30 @@ const setMenuStarlink = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuStarlink = setMenuStarlink;
+
+
+
+
+
+const openPayload = async(element)=>{
+
+    await setFooter(element);
+    await Payload(0);
+    await Payloads_menu();
+    await menu();
+    await actualInfo("Payloads");
+
+};
+document.openPayload = openPayload;
+
+const setMenuPayloads = async(element) =>{
+    let id = element.id;
+
+    await Payload(id - 1);
+    await Payloads_menu();
+    await changeMenu(id);
+};
+document.setMenuPayloads = setMenuPayloads;
 
 
 
