@@ -9,11 +9,14 @@ import { Ships_menu, Ship } from "./modules/maquetar/ships.js";
 import { Landpads_menu, Landpad } from "./modules/maquetar/landpads.js";
 import { Roadster } from "./modules/maquetar/roadsters.js";
 import { Starlinks_menu, Starlink } from "./modules/maquetar/starlinks.js";
+import { Payloads_menu, Payload } from "./modules/maquetar/payloads.js";
 
-await footer();
-await Rocket(0);
-await Rockets_menu();
-await menu();
+
+await Payload();
+// await footer();
+// await Rocket(0);
+// await Rockets_menu();
+// await menu();
 
 const openRocketID = async(id) =>{
     await RocketID(id);
