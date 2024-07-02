@@ -21,7 +21,7 @@ export const Landpads_menu = async() =>{
 
 export const Landpad = async(i) =>{
     let Landpads = await getLandpads();
-    let Landpad = Landpads[0];
+    let Landpad = Landpads[i];
     console.log(Landpad);
 
     let full_name = Landpad.full_name;
