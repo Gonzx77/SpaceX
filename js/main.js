@@ -6,14 +6,12 @@ import { Cpasules_menu, Capsule } from "./modules/maquetar/capsule.js";
 import { Launches_menu, Launch, LaunchID } from "./modules/maquetar/launch.js";
 import { Crew_menu, Crew } from "./modules/maquetar/crew.js";
 import { Ships_menu, Ship } from "./modules/maquetar/ships.js";
-import { Landpad } from "./modules/maquetar/landpads.js";
+import { Landpads_menu, Landpad } from "./modules/maquetar/landpads.js";
 
-// await footer();
-// await Rocket(0);
-// await Rockets_menu();
-// await menu();
-
-await Landpad();
+await footer();
+await Rocket(0);
+await Rockets_menu();
+await menu();
 
 const openRocketID = async(id) =>{
     await RocketID(id);
@@ -153,6 +151,30 @@ const setMenuShip = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuShip = setMenuShip;
+
+
+
+
+
+const openLandpad = async(element)=>{
+
+    await setFooter(element);
+    await Landpad(0);
+    await Landpads_menu();
+    await menu();
+    await actualInfo("Landpads");
+
+};
+document.openLandpad = openLandpad;
+
+const setMenuLandpad = async(element) =>{
+    let id = element.id;
+
+    await Landpad(id - 1);
+    await Landpads_menu();
+    await changeMenu(id);
+};
+document.setMenuLandpad = setMenuLandpad;
 
 
 
