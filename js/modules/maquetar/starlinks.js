@@ -1,6 +1,6 @@
-import { getLandpads } from "../app.js";
+import { getStarlinks } from "../app.js";
 
-export const Landpads_menu = async() =>{
+export const Starlinks_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
     let crew = await getLandpads();
@@ -19,27 +19,12 @@ export const Landpads_menu = async() =>{
     }
 };
 
-export const Landpad = async(i) =>{
-    let Landpads = await getLandpads();
-    let Landpad = Landpads[i];
-
-    let full_name = Landpad.full_name;
-    let details = Landpad.details;
-    let region = Landpad.region;
-    let status = Landpad.status;
-    let namee = Landpad.name;
-    let type = Landpad.type;
-    let wikipedia = Landpad.wikipedia;
-    let latitude = Landpad.latitude;
-    let longitude = Landpad.longitude;
-    let locality = Landpad.locality;
-    let landing_attempts = Landpad.landing_attempts;
-
-    let launchesCantidad = Landpad.launches.length;
-    let launches = Landpad.launches;
+export const Starlink = async(i) =>{
+    let Starlinks = await getStarlinks();
+    let Starlink = Starlinks[i];
 
     let mGS1Element2 = "";
-    for (let i = 0; i < launchesCantidad; i++){
+    for (let i = 0; i < 0; i++){
         let launch = launches[i];
         mGS1Element2 += `
         <div class="iG1Element">
@@ -47,20 +32,17 @@ export const Landpad = async(i) =>{
                 <img class="iG1Img" src="storage/media/images/point.png">
             </div>
             <div class="iG1ElementTitle">
-                <p class="iG1Title">Launch #${i + 1}</p>
-                <p class="iG1Text"><span class="openBtn" onclick="openLaunchID('${launch}')">Open</span></p>
+                <p class="iG1Title">Launch #0</p>
+                <p class="iG1Text"><span class="openBtn" onclick="openLaunchID('0')">Open</span></p>
             </div>
         </div>`;
     };
 
-    let imagesCantidad = Landpad.images.large.length;
-    let images = Landpad.images.large;
-
     let capsuleImg = "";
 
-    if (images[0]){
-        for (let i = 0; i < imagesCantidad; i++){
-            capsuleImg += `<img class="rocketImg" src="${images[i]}" referrerpolicy="no-referrer">`;
+    if (true){
+        for (let i = 0; i < 0; i++){
+            capsuleImg += `<img class="rocketImg" src="" referrerpolicy="no-referrer">`;
         }
     }
 
@@ -81,7 +63,7 @@ export const Landpad = async(i) =>{
         <div class="iG1ElementTitle">
             <p class="iG1Title">Details</p>
             <br>
-            <p class="iG1Text">${details}</p>
+            <p class="iG1Text">0</p>
         </div>
         </div>`;
 
@@ -96,14 +78,14 @@ export const Landpad = async(i) =>{
 
     let plantilla2 = `
         <div id="centerTitle" class="mGS2Section">
-                <h1 id="mainTitle">${full_name}</h1>
+                <h1 id="mainTitle">0</h1>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
-                            <span id="circleTitleMargin">${region}</span>
-                            <span class="circleInfo">${status}</span>
+                            <span id="circleTitleMargin">0</span>
+                            <span class="circleInfo">0</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="percent_sea_level} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -114,7 +96,7 @@ export const Landpad = async(i) =>{
                     <div class="circleDiv">
                         <p class="circeTitle">
                             <span id="circleTitleMargin">Total Launches</span>
-                            <span class="circleInfo">${launchesCantidad}</span>
+                            <span class="circleInfo">0</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -132,16 +114,16 @@ export const Landpad = async(i) =>{
                             <p class="infoFlexTitle">LANDPAD INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Name</p><p class="iFEText Right">${namee}</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">${type}</p>
+                                <p class="iFEText Left">Type</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Locality</p><p class="iFEText Right">${locality}</p>
+                                <p class="iFEText Left">Locality</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Wikipedia</p><a href="${wikipedia}" target="_blanck"><p class="iFEText Right2">Open</a></p>
+                                <p class="iFEText Left">Wikipedia</p><a href="0" target="_blanck"><p class="iFEText Right2">Open</a></p>
                             </div>
                         </div>
                     </div>
@@ -160,13 +142,13 @@ export const Landpad = async(i) =>{
                             <p class="infoFlexTitle">POSITION INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Altitude</p><p class="iFEText Right">${longitude}</p>
+                                <p class="iFEText Left">Altitude</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Latitude</p><p class="iFEText Right">${latitude}</p>
+                                <p class="iFEText Left">Latitude</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">landing Attempts</p><p class="iFEText Right">${landing_attempts}</p>
+                                <p class="iFEText Left">landing Attempts</p><p class="iFEText Right">0</p>
                             </div>
                         </div>
                     </div>

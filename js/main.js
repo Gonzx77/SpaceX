@@ -8,11 +8,14 @@ import { Crew_menu, Crew } from "./modules/maquetar/crew.js";
 import { Ships_menu, Ship } from "./modules/maquetar/ships.js";
 import { Landpads_menu, Landpad } from "./modules/maquetar/landpads.js";
 import { Roadster } from "./modules/maquetar/roadsters.js";
+import { Starlinks_menu, Starlink } from "./modules/maquetar/starlinks.js";
 
-await footer();
-await Rocket(0);
-await Rockets_menu();
-await menu();
+// await footer();
+// await Rocket(0);
+// await Rockets_menu();
+// await menu();
+
+await Starlink();
 
 const openRocketID = async(id) =>{
     await RocketID(id);
