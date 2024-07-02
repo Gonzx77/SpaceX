@@ -175,6 +175,7 @@ body{
 
 
 .infoGalery1{
+    height: 88vh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -428,5 +429,6 @@ body{
 }
 
 .openBtn{
+    font-family: "Bold", sans-serif;
     color: var(--color-3);
 }
