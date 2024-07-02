@@ -62,6 +62,8 @@ export const Landpad = async(i) =>{
         for (let i = 0; i < imagesCantidad; i++){
             capsuleImg += `<img class="rocketImg" src="${images[i]}" referrerpolicy="no-referrer">`;
         }
+    }else{
+        capsuleImg = `<img class="rocketImg" src="storage/media/footer/land.png" referrerpolicy="no-referrer">`;
     }
 
 

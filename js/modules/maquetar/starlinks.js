@@ -1,16 +1,17 @@
 import { getStarlinks } from "../app.js";
+import { getLaunch } from "../app.js";
 
 export const Starlinks_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
-    let crew = await getLandpads();
+    let crew = await getStarlinks();
     let number = 1;
 
     let cont = crew.length;
 
     for (let i = 0; i < cont; i++){
         let plantilla = `
-        <div onclick="setMenuLandpad(this)" id="${number}" class="navigationNumber">
+        <div onclick="setMenuStarlink(this)" id="${number}" class="navigationNumber">
             ${number}
         </div>`;
 
@@ -23,27 +24,30 @@ export const Starlink = async(i) =>{
     let Starlinks = await getStarlinks();
     let Starlink = Starlinks[i];
 
+    let version = Starlink.version;
+    let OBJECT_NAME = Starlink.spaceTrack.OBJECT_NAME;
+    let CENTER_NAME = Starlink.spaceTrack.CENTER_NAME;
+    let DECAY_DATE = Starlink.spaceTrack.DECAY_DATE;
+    let launchID = Starlink.launch;
+
+    let launch = await getLaunch(launchID);
+    let launchName = launch.name;
+    let rocketID = launch.rocket;
+    let flight_number = launch.flight_number;
+
     let mGS1Element2 = "";
-    for (let i = 0; i < 0; i++){
-        let launch = launches[i];
-        mGS1Element2 += `
-        <div class="iG1Element">
-            <div class="iG1ElementImg">
-                <img class="iG1Img" src="storage/media/images/point.png">
-            </div>
-            <div class="iG1ElementTitle">
-                <p class="iG1Title">Launch #0</p>
-                <p class="iG1Text"><span class="openBtn" onclick="openLaunchID('0')">Open</span></p>
-            </div>
-        </div>`;
-    };
+
+    let img = launch.links.flickr.original;
+    let imgCantidad = launch.links.flickr.original.length;
 
     let capsuleImg = "";
 
-    if (true){
-        for (let i = 0; i < 0; i++){
-            capsuleImg += `<img class="rocketImg" src="" referrerpolicy="no-referrer">`;
+    if (img[0]){
+        for (let i = 0; i < imgCantidad; i++){
+            capsuleImg += `<img class="rocketImg" src="${img[i]}" referrerpolicy="no-referrer">`;
         }
+    }else{
+        capsuleImg = `<img class="rocketImg" src="storage/media/footer/starlink.png" referrerpolicy="no-referrer">`;
     }
 
 
@@ -55,51 +59,39 @@ export const Starlink = async(i) =>{
     mGS2.innerHTML = "";
     mGS3.innerHTML = "";
 
-    let mGS1Element = `
-    <div class="iG1Element">
-        <div class="iG1ElementImg">
-            <img class="iG1Img" src="storage/media/images/point.png">
-        </div>
-        <div class="iG1ElementTitle">
-            <p class="iG1Title">Details</p>
-            <br>
-            <p class="iG1Text">0</p>
-        </div>
-        </div>`;
-
     let plantilla1 = `
         <div class="mGS1Section"></div>
         <div class="mGS1Section">
             <div class="infoGalery1">
-                        ${mGS1Element}
+
             </div>
         </div>
     `;
 
     let plantilla2 = `
         <div id="centerTitle" class="mGS2Section">
-                <h1 id="mainTitle">0</h1>
+                <h1 id="mainTitle">${OBJECT_NAME}</h1>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
-                            <span id="circleTitleMargin">0</span>
-                            <span class="circleInfo">0</span>
+                            <span id="circleTitleMargin">Center Name</span>
+                            <span class="circleInfo">${CENTER_NAME}</span>
                         </p>
                         <svg class="circleSvg">
-                            <circle class="circle" stroke-dasharray="percent_sea_level} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
+                            <circle class="circle" stroke-dasharray="101 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
                         </svg>
                     </div>
                 </div>
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
-                            <span id="circleTitleMargin">Total Launches</span>
-                            <span class="circleInfo">0</span>
+                            <span id="circleTitleMargin">Date</span>
+                            <span class="circleInfo">${DECAY_DATE}</span>
                         </p>
                         <svg class="circleSvg">
-                            <circle class="circle" stroke-dasharray="thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
+                            <circle class="circle" stroke-dasharray="101 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
                         </svg>
                     </div>
                 </div>
@@ -111,19 +103,16 @@ export const Starlink = async(i) =>{
                     </div>
                     <div class="mGS2SGGSDiv">
                         <div class="infoFlex">
-                            <p class="infoFlexTitle">LANDPAD INFORMATION</p>
+                            <p class="infoFlexTitle">STARLINK INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Name</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Version</p><p class="iFEText Right">${version}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">${OBJECT_NAME}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Locality</p><p class="iFEText Right">0</p>
-                            </div>
-                            <div class="infoFlexElement">
-                                <p class="iFEText Left">Wikipedia</p><a href="0" target="_blanck"><p class="iFEText Right2">Open</a></p>
+                                <p class="iFEText Left">Launch</p><p onclick="openLaunchID('${launchID}')" class="iFEText Right2">Open</p>
                             </div>
                         </div>
                     </div>
@@ -139,16 +128,16 @@ export const Starlink = async(i) =>{
                     </div>
                     <div class="mGS2SGGSDiv">
                         <div class="infoFlex">
-                            <p class="infoFlexTitle">POSITION INFORMATION</p>
+                            <p class="infoFlexTitle">LAUNCH INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Altitude</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">${launchName}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Latitude</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Flight Number</p><p class="iFEText Right">${flight_number}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">landing Attempts</p><p class="iFEText Right">0</p>
+                                <p class="iFEText Left">Rocket</p><p onclick="openRocketID('${rocketID}')" class="iFEText Right2">Open</p>
                             </div>
                         </div>
                     </div>
