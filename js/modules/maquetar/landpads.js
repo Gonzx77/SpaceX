@@ -1,44 +1,12 @@
-import { getShips } from "../app.js";
-import { getLaunch } from "../app.js";
+import { getLandpads } from "../app.js";
 
-export const Ships_menu = async() =>{
-    let container = document.querySelector(".navigationNumbersGrid");
-    container.innerHTML = "";
-    let crew = await getShips();
-    let number = 1;
+export const Landpad = async(i) =>{
+    let Landpads = await getLandpads();
+    let Landpad = Landpads[0];
+    console.log(Landpad);
 
-    let cont = crew.length;
-
-    for (let i = 0; i < cont; i++){
-        let plantilla = `
-        <div onclick="setMenuShip(this)" id="${number}" class="navigationNumber">
-            ${number}
-        </div>`;
-
-        number ++;
-        container.innerHTML += plantilla;
-    }
-};
-
-export const Ship = async(i) =>{
-    let Ships = await getShips();
-    let Ship = Ships[i];
-
-    let shipImg = Ship.image;
-    let namee = Ship.name;
-    let type = Ship.type;
-    let massKg = Ship.mass_kg;
-    let legacy_id = Ship.legacy_id;
-    let home_port = Ship.home_port;
-    let active = Ship.active;
-    let info = Ship.link;
-
-
-    let launches = Ship.launches;
-    let launchCantidad = Ship.launches.length;
-
-    let roles = Ship.roles;
-    let rolesCantidad = Ship.roles.length;
+    let full_name = Landpad.full_name;
+    let details = Landpad.details;
 
     let mGS1 = document.querySelector("#mGS1");
     let mGS2 = document.querySelector("#mGS2");
@@ -48,51 +16,30 @@ export const Ship = async(i) =>{
     mGS2.innerHTML = "";
     mGS3.innerHTML = "";
 
-    let capsuleImg = `<img class="rocketImg" src="storage/media/footer/ship.png" referrerpolicy="no-referrer">`; 
-    if (shipImg){
-        capsuleImg = `<img class="rocketImg" src="${shipImg}" referrerpolicy="no-referrer">`; 
-    } 
+    let capsuleImg = `<img class="rocketImg" src="storage/media/footer/rocket.svg" referrerpolicy="no-referrer">`; 
 
-    let mGS1Element = "";
-    for (let i = 0; i < launchCantidad; i++){
-        let launchID = launches[i];
-        let launch = await getLaunch(launchID);
+    let mGS1Element = `
+    <div class="iG1Element">
+        <div class="iG1ElementImg">
+            <img class="iG1Img" src="storage/media/images/point.png">
+        </div>
+        <div class="iG1ElementTitle">
+            <p class="iG1Title">Details</p>
+            <br>
+            <p class="iG1Text">${details}</p>
+        </div>
+        </div>`;
 
-        let launchName = launch.name;
-        let rocketID = launch.rocket;
-
-        mGS1Element += `
+    let mGS1Element2 = `
         <div class="iG1Element">
             <div class="iG1ElementImg">
                 <img class="iG1Img" src="storage/media/images/point.png">
             </div>
             <div class="iG1ElementTitle">
-                <p class="iG1Title">Launch #${i + 1}</p>
-                <p class="iG1Text">Name: ${launchName}</p>
-                <br>
-                <p class="iG1Text">Launch: <span onclick="openLaunchID('${launchID}')" class="openBtn">Open</span></p>
-                <br>
-                <p class="iG1Text">Rocket: <span onclick="openRocketID('${rocketID}')" class="openBtn">Open</span></p>
+                <p class="iG1Title">0</p>
+                <p class="iG1Text">0</p>
             </div>
         </div>`;
-    };
-
-    let mGS1Element2 = "";
-    for (let i = 0; i < rolesCantidad; i++){
-        let role = roles[i];
-
-        mGS1Element2 += `
-        <div class="iG1Element">
-            <div class="iG1ElementImg">
-                <img class="iG1Img" src="storage/media/images/point.png">
-            </div>
-            <div class="iG1ElementTitle">
-                <p class="iG1Title">Role #${i + 1}</p>
-                <p class="iG1Text">${role}</p>
-            </div>
-        </div>`
-    };
-
 
     let plantilla1 = `
         <div class="mGS1Section"></div>
@@ -101,18 +48,18 @@ export const Ship = async(i) =>{
                         ${mGS1Element}
             </div>
         </div>
-        `;
+    `;
 
     let plantilla2 = `
         <div id="centerTitle" class="mGS2Section">
-                <h1 id="mainTitle">${type} ${namee}</h1>
+                <h1 id="mainTitle">${full_name}</h1>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 <div class="infoCirclesDiv">
                     <div class="circleDiv">
                         <p class="circeTitle">
                             <span id="circleTitleMargin">Total Launches</span>
-                            <span class="circleInfo">${launchCantidad}</span>
+                            <span class="circleInfo">0</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="percent_sea_level} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -123,7 +70,7 @@ export const Ship = async(i) =>{
                     <div class="circleDiv">
                         <p class="circeTitle">
                             <span id="circleTitleMargin">Total Roles</span>
-                            <span class="circleInfo">${rolesCantidad}</span>
+                            <span class="circleInfo">0</span>
                         </p>
                         <svg class="circleSvg">
                             <circle class="circle" stroke-dasharray="thrust_vacuum} 100" r="80" cx="50%" cy="50%" pathlength="100"></circle>
@@ -141,13 +88,13 @@ export const Ship = async(i) =>{
                             <p class="infoFlexTitle">SHIP INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Home Port</p><p class="iFEText Right">${home_port}</p>
+                                <p class="iFEText Left">Home Port</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Active</p><p class="iFEText Right">${active}</p>
+                                <p class="iFEText Left">Active</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">More Info</p><a href="${info}" target="_blanck"><p class="iFEText Right2">Open</a></p>
+                                <p class="iFEText Left">More Info</p><a href="" target="_blanck"><p class="iFEText Right2">Open</a></p>
                             </div>
                         </div>
                     </div>
@@ -166,16 +113,16 @@ export const Ship = async(i) =>{
                             <p class="infoFlexTitle">SHIP INFORMATION</p>
                             <div class="line"></div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Name</p><p class="iFEText Right">${namee}</p>
+                                <p class="iFEText Left">Name</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Type</p><p class="iFEText Right">${type}</p>
+                                <p class="iFEText Left">Type</p><p class="iFEText Right">0</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Mass</p><p class="iFEText Right">${massKg} KG</p>
+                                <p class="iFEText Left">Mass</p><p class="iFEText Right">0 KG</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Legacy ID</p><p class="iFEText Right">${legacy_id}</p>
+                                <p class="iFEText Left">Legacy ID</p><p class="iFEText Right">0</p>
                             </div>
                         </div>
                     </div>

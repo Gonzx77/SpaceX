@@ -21,7 +21,7 @@ return res;
 }
 
 
-export const getLaunches = async(id) =>{
+export const getLaunches = async() =>{
     const url = "https://api.spacexdata.com/v4/launches";
     const options = {
     method: 'GET'
@@ -32,7 +32,7 @@ let res = data.json();
 return res;
 }
 
-export const getCrews = async(id) =>{
+export const getCrews = async() =>{
     const url = "https://api.spacexdata.com/v4/crew";
     const options = {
     method: 'GET'
@@ -43,8 +43,20 @@ let res = data.json();
 return res;
 }
 
-export const getShips = async(id) =>{
+export const getShips = async() =>{
     const url = "https://api.spacexdata.com/v4/ships";
+    const options = {
+    method: 'GET'
+};
+
+let data = await fetch(url, options);
+let res = data.json();
+return res;
+}
+
+
+export const getLandpads = async() =>{
+    const url = "https://api.spacexdata.com/v4/landpads";
     const options = {
     method: 'GET'
 };
