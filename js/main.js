@@ -7,6 +7,7 @@ import { Launches_menu, Launch, LaunchID } from "./modules/maquetar/launch.js";
 import { Crew_menu, Crew } from "./modules/maquetar/crew.js";
 import { Ships_menu, Ship } from "./modules/maquetar/ships.js";
 import { Landpads_menu, Landpad } from "./modules/maquetar/landpads.js";
+import { Roadster } from "./modules/maquetar/roadsters.js";
 
 await footer();
 await Rocket(0);
@@ -175,6 +176,19 @@ const setMenuLandpad = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuLandpad = setMenuLandpad;
+
+
+
+
+
+const openRoadster = async(element)=>{
+
+    await setFooter(element);
+    await Roadster();
+    await actualInfo("Roadster");
+
+};
+document.openRoadster = openRoadster;
 
 
 

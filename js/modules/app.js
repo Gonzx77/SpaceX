@@ -66,6 +66,17 @@ let res = data.json();
 return res;
 }
 
+export const getRoadster = async() =>{
+    const url = "https://api.spacexdata.com/v4/roadster";
+    const options = {
+    method: 'GET'
+};
+
+let data = await fetch(url, options);
+let res = data.json();
+return res;
+}
+
 
 export const getLaunch = async(id) =>{
     const url = `https://api.spacexdata.com/v4/launches/${id}`;
