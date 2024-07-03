@@ -115,6 +115,18 @@ return res;
 }
 
 
+export const getDragons = async() =>{
+    const url = "https://api.spacexdata.com/v4/dragons";
+    const options = {
+    method: 'GET'
+};
+
+let data = await fetch(url, options);
+let res = data.json();
+return res;
+}
+
+
 export const getStarlinks = async () => {
     const URL = "https://api.spacexdata.com/v4/starlink/query";
     const options = {

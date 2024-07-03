@@ -13,6 +13,9 @@ import { Payloads_menu, Payload } from "./modules/maquetar/payloads.js";
 import { Launchpads_menu, Launchpad } from "./modules/maquetar/launchpads.js"
 import { Historys_menu, History } from "./modules/maquetar/history.js";
 
+import { getDragons } from "./modules/app.js";
+console.log(await getDragons());
+
 await footer();
 await Rocket(0);
 await Rockets_menu();
