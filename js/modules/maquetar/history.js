@@ -92,6 +92,7 @@ export const History = async(i) =>{
     let plantilla2 = `
         <div id="centerTitle" class="mGS2Section">
                 <h1 id="mainTitle">${title}</h1>
+                    <div class="moreInfoDiv"><a class="moreInfoText" href="${article}" target="_blank">OPEN</a></div>
             </div>
             <div id="infoCriclesGrid" class="mGS2Section">
                 
@@ -115,8 +116,6 @@ export const History = async(i) =>{
                     <div class="imagesGalery">
                         ${capsuleImg}
                     </div>
-                    <p class="textDown">MORE INFO</p>
-                    <div class="moreInfoDiv"><a class="moreInfoText" href="${article}" target="_blank">OPEN</a></div>
                 </div>
                 <div class="mGS2SGGridSection">
                     <div class="mGS2SGGSDiv">
