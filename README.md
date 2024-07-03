@@ -22,3 +22,5 @@ Actualmente, solo hay disponibles 4 de las 14 pestañas. Estas son:
 - Roadster.
 - Starlinks.
 - Payloads.
+- Launchpads.
+- History.
