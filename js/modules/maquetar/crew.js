@@ -1,4 +1,6 @@
-import { getCrews, getLaunch, getRocket } from "../app.js";
+import { getCrews, getLaunch } from "../app.js";
+
+let loadingdiv = document.querySelector("#loadingDiv");
 
 export const Crew_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
@@ -20,6 +22,7 @@ export const Crew_menu = async() =>{
 };
 
 export const Crew = async(i) =>{
+    loadingdiv.style.display = "block";
     let crew = await getCrews();
     let member = crew[i];
 
@@ -156,4 +159,5 @@ export const Crew = async(i) =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

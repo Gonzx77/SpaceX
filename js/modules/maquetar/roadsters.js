@@ -1,6 +1,9 @@
 import { getRoadster } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+
 export const Roadster = async() =>{
+    loadingdiv.style.display = "block";
     let Roadster = await getRoadster();
 
     let namee = Roadster.name;
@@ -168,4 +171,5 @@ export const Roadster = async() =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

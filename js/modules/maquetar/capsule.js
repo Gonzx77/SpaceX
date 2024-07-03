@@ -1,6 +1,8 @@
 import { getCapsules } from "../app.js";
 import { getLaunch } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+
 export const Cpasules_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
@@ -21,6 +23,7 @@ export const Cpasules_menu = async() =>{
 };
 
 export const Capsule = async(i) =>{
+    loadingdiv.style.display = "block";
     let capsules = await getCapsules();
     let capsule = capsules[i];
 
@@ -149,4 +152,5 @@ export const Capsule = async(i) =>{
 
     mGS2.innerHTML = plantilla1;
     mGS3.innerHTML = plantilla2;
+    loadingdiv.style.display = "none";
 };

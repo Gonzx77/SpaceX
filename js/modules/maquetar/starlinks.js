@@ -1,6 +1,8 @@
 import { getStarlinks } from "../app.js";
 import { getLaunch } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+
 export const Starlinks_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
@@ -21,6 +23,7 @@ export const Starlinks_menu = async() =>{
 };
 
 export const Starlink = async(i) =>{
+    loadingdiv.style.display = "block";
     let Starlinks = await getStarlinks();
     let Starlink = Starlinks[i];
 
@@ -164,4 +167,5 @@ export const Starlink = async(i) =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

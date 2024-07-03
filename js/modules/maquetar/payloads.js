@@ -1,5 +1,7 @@
 import { getPayloads, getLaunch } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+
 export const Payloads_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
@@ -20,6 +22,7 @@ export const Payloads_menu = async() =>{
 };
 
 export const Payload = async(i) =>{
+    loadingdiv.style.display = "block";
     let Payloads = await getPayloads();
     let Payload = Payloads[i];
 
@@ -196,4 +199,5 @@ export const Payload = async(i) =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

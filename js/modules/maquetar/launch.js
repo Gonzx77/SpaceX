@@ -1,5 +1,6 @@
 import { getLaunches, getRocket, getLaunch } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
 
 export const Launches_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
@@ -21,6 +22,7 @@ export const Launches_menu = async() =>{
 };
 
 export const Launch = async(i) =>{
+    loadingdiv.style.display = "block";
     let launches = await getLaunches();
     let launch = launches[i];
     let launchRocketID = launch.rocket;
@@ -188,9 +190,11 @@ export const Launch = async(i) =>{
     `;
 
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 }
 
 export const LaunchID = async(id) =>{
+    loadingdiv.style.display = "block";
     let launch = await getLaunch(id);
     let launchRocketID = launch.rocket;
     let rocket = await getRocket(launchRocketID);
@@ -357,4 +361,5 @@ export const LaunchID = async(id) =>{
     `;
 
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 }

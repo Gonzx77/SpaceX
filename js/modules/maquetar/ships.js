@@ -1,6 +1,9 @@
 import { getShips } from "../app.js";
 import { getLaunch } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+loadingdiv.style.display = "block";
+
 export const Ships_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
@@ -21,6 +24,7 @@ export const Ships_menu = async() =>{
 };
 
 export const Ship = async(i) =>{
+    loadingdiv.style.display = "block";
     let Ships = await getShips();
     let Ship = Ships[i];
 
@@ -202,4 +206,5 @@ export const Ship = async(i) =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

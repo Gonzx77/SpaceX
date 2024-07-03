@@ -1,5 +1,7 @@
 import { getLandpads } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+
 export const Landpads_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
@@ -20,6 +22,7 @@ export const Landpads_menu = async() =>{
 };
 
 export const Landpad = async(i) =>{
+    loadingdiv.style.display = "block";
     let Landpads = await getLandpads();
     let Landpad = Landpads[i];
 
@@ -195,4 +198,5 @@ export const Landpad = async(i) =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

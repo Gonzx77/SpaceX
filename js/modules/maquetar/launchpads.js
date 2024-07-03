@@ -1,5 +1,7 @@
 import { getLaunchpads, getLaunch, getRocket } from "../app.js";
 
+let loadingdiv = document.querySelector("#loadingDiv");
+
 export const Launchpads_menu = async() =>{
     let container = document.querySelector(".navigationNumbersGrid");
     container.innerHTML = "";
@@ -20,6 +22,7 @@ export const Launchpads_menu = async() =>{
 };
 
 export const Launchpad = async(i) =>{
+    loadingdiv.style.display = "block";
     let Launchpads = await getLaunchpads();
     let Launchpad = Launchpads[i];
 
@@ -197,4 +200,5 @@ export const Launchpad = async(i) =>{
     mGS1.innerHTML = plantilla1;
     mGS2.innerHTML = plantilla2;
     mGS3.innerHTML = plantilla3;
+    loadingdiv.style.display = "none";
 };

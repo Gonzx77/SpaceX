@@ -17,6 +17,12 @@ await Rocket(0);
 await Rockets_menu();
 await menu();
 
+let loadingdiv = document.querySelector("#loadingDiv");
+loadingdiv.style.display = "none";
+
+let container = document.querySelector("#actualInfoText");
+container.innerHTML = "Rockets";
+
 const openRocketID = async(id) =>{
     await RocketID(id);
 };
@@ -25,9 +31,6 @@ const openLaunchID = async(id) =>{
     await LaunchID(id);
 };
 document.openLaunchID = openLaunchID;
-
-let container = document.querySelector("#actualInfoText");
-container.innerHTML = "Rockets";
 
 const actualInfo = async(text) =>{
     let container = document.querySelector("#actualInfoText");
