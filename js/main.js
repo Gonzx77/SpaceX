@@ -12,9 +12,7 @@ import { Starlinks_menu, Starlink } from "./modules/maquetar/starlinks.js";
 import { Payloads_menu, Payload } from "./modules/maquetar/payloads.js";
 import { Launchpads_menu, Launchpad } from "./modules/maquetar/launchpads.js"
 import { Historys_menu, History } from "./modules/maquetar/history.js";
-
-import { getDragons } from "./modules/app.js";
-console.log(await getDragons());
+import { Dragons_menu, Dragon } from "./modules/maquetar/dragons.js";
 
 await footer();
 await Rocket(0);
@@ -295,6 +293,30 @@ const setMenuHistory = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuHistory = setMenuHistory;
+
+
+
+
+
+const openDragon = async(element)=>{
+
+    await setFooter(element);
+    await Dragon(0);
+    await Dragons_menu();
+    await menu();
+    await actualInfo("Dragons");
+
+};
+document.openDragon = openDragon;
+
+const setMenuDragon = async(element) =>{
+    let id = element.id;
+
+    await Dragon(id - 1);
+    await Dragons_menu();
+    await changeMenu(id);
+};
+document.setMenuDragon = setMenuDragon;
 
 
 
