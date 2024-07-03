@@ -11,6 +11,7 @@ import { Roadster } from "./modules/maquetar/roadsters.js";
 import { Starlinks_menu, Starlink } from "./modules/maquetar/starlinks.js";
 import { Payloads_menu, Payload } from "./modules/maquetar/payloads.js";
 import { Launchpads_menu, Launchpad } from "./modules/maquetar/launchpads.js"
+import { Historys_menu, History } from "./modules/maquetar/history.js";
 
 await footer();
 await Rocket(0);
@@ -267,6 +268,30 @@ const setMenuLaunchpad = async(element) =>{
     await changeMenu(id);
 };
 document.setMenuLaunchpad = setMenuLaunchpad;
+
+
+
+
+
+const openHistory = async(element)=>{
+
+    await setFooter(element);
+    await History(0);
+    await Historys_menu();
+    await menu();
+    await actualInfo("Histories");
+
+};
+document.openHistory = openHistory;
+
+const setMenuHistory = async(element) =>{
+    let id = element.id;
+
+    await History(id - 1);
+    await Historys_menu();
+    await changeMenu(id);
+};
+document.setMenuHistory = setMenuHistory;
 
 
 

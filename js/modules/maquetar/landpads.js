@@ -146,7 +146,7 @@ export const Landpad = async(i) =>{
                                 <p class="iFEText Left">Locality</p><p class="iFEText Right">${locality}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Wikipedia</p><a href="${wikipedia}" target="_blanck"><p class="iFEText Right2">Open</a></p>
+                                <p class="iFEText Left">Wikipedia</p><a class="moreInfoText2" href="${wikipedia}" target="_blanck"><p class="iFEText Right2">Open</a></p>
                             </div>
                         </div>
                     </div>

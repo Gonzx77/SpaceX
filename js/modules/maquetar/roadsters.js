@@ -119,7 +119,7 @@ export const Roadster = async() =>{
                                 <p class="iFEText Left">Orbit Type</p><p class="iFEText Right">${orbit_type}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">Wikipedia</p><a href="${wikipedia}" target="_blanck"><p class="iFEText Right2">Open</a></p>
+                                <p class="iFEText Left">Wikipedia</p><a class="moreInfoText2" href="${wikipedia}" target="_blanck"><p class="iFEText Right2">Open</a></p>
                             </div>
                         </div>
                     </div>

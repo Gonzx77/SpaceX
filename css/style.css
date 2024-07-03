@@ -358,6 +358,11 @@ body{
     transform: scale(0.9);
     width: 300px;
 }
+.rocketImg2{
+    transform: scale(0.9);
+    width: 300px;
+    filter: invert();
+}
 
 
 .circleDiv{
@@ -452,4 +457,39 @@ body{
 .openBtn{
     font-family: "Bold", sans-serif;
     color: var(--color-3);
+}
+
+.textDown{
+    color: #ffffff;
+    font-family: "Bold", sans-serif;
+    font-size: 40px;
+    margin-top: 20px;
+}
+.moreInfoDiv{
+    transition: 0.2s;
+    background-color: var(--color-3-2);
+    backdrop-filter: blur(2px);
+    margin-top: 10px;
+    width: 60%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Bold", sans-serif;
+    font-size: 30px;
+}
+.moreInfoDiv:hover{
+    background-color: var(--color-3);
+    transform: scale(1.05);
+}
+
+.moreInfoText{
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    text-decoration: inherit;
+}
+.moreInfoText2{
+    color: var(--color-3);
+    text-decoration: none;
 }

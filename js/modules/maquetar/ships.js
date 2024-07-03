@@ -151,7 +151,7 @@ export const Ship = async(i) =>{
                                 <p class="iFEText Left">Active</p><p class="iFEText Right">${active}</p>
                             </div>
                             <div class="infoFlexElement">
-                                <p class="iFEText Left">More Info</p><a href="${info}" target="_blanck"><p class="iFEText Right2">Open</a></p>
+                                <p class="iFEText Left">More Info</p><a class="moreInfoText2" href="${info}" target="_blanck"><p class="iFEText Right2">Open</a></p>
                             </div>
                         </div>
                     </div>
